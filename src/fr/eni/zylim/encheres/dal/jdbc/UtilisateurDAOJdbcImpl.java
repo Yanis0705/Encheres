@@ -10,8 +10,10 @@ import java.util.List;
 
 
 import fr.eni.zylim.encheres.bo.Utilisateur;
+import fr.eni.zylim.encheres.dal.DALException;
+import fr.eni.zylim.encheres.dal.UtilisateurDAO;
 
-public class UtilisateurDAOJdbcImpl implements Utilisateur {
+public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 	private static final String SQL_SELECT_ALL_UTILISATEUR = "select * from UTILISATEURS)" ;
 	
@@ -20,7 +22,7 @@ public class UtilisateurDAOJdbcImpl implements Utilisateur {
 	}
 
 	@Override
-	public List<Utilisateur> selectAllRepas() throws DALException {
+	public List<Utilisateur> selectAllUtilisateurs() throws DALException {
 
 		List<Utilisateur> listeDesRepas = new ArrayList<Utilisateur>();
 		
@@ -29,6 +31,7 @@ public class UtilisateurDAOJdbcImpl implements Utilisateur {
 		
 		// Obtient une objet de commande (Statement) = ordre SQL
 		Statement ordre = null;
+		return listeDesRepas;
 
 
 }
