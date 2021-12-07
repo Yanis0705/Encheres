@@ -8,9 +8,9 @@ import java.util.List;
 //import fr.eni.javee.suivirepas.dal.RepasDAO;
 //import fr.eni.javee.suivirepas.dal.RepasDAOFactory;
 
-public class ArticelManager {
+public class ArticlelManager {
 	
-	private static ArticelManager instance;
+	private static ArticlelManager instance;
 	
 //	private static RepasDAO dao;
 //	

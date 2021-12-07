@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ConsulterAvecConnexion
  */
-@WebServlet("/ConsulterAvecConnexion")
-public class ConsulterAvecConnexion extends HttpServlet {
+@WebServlet("/consulteraccueilconnexion")
+public class ConsulterAccueilConnexionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ConsulterAvecConnexion() {
+    public ConsulterAccueilConnexionServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
