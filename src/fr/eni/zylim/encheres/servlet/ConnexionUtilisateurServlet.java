@@ -10,7 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ConnexionUtilisateurServlet
  */
+<<<<<<< Updated upstream
 @WebServlet("/connexionutilisateur")
+=======
+@WebServlet(
+		name = "Connexion",
+		urlPatterns = { "/connect" }
+		)
+>>>>>>> Stashed changes
 public class ConnexionUtilisateurServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -27,7 +34,14 @@ public class ConnexionUtilisateurServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.sendRedirect("/encheres/WebContent/WEB-INF/Connexion.jsp");
+
+		//response.sendRedirect("/encheres/WebConten/WEB-INF/test.html");
+	//response.sendRedirect("/Connexion.jsp");
+		//getServletContext().getRequestDispatcher("/Connexion.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/WEB-INF/jsp/Connexion.jsp").forward(request, response);
+
 	}
 
 	/**
@@ -35,6 +49,7 @@ public class ConnexionUtilisateurServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
 		doGet(request, response);
 	}
 

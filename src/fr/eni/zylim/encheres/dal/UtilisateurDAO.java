@@ -6,6 +6,8 @@ import fr.eni.zylim.encheres.bo.Utilisateur;
 
 public interface UtilisateurDAO {
 	
-	List<Utilisateur> selectAllRepas() throws DALException;
+	
+
+	List<Utilisateur> selectAllUtilisateurs() throws DALException;
 
 }
