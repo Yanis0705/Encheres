@@ -2,7 +2,7 @@ package fr.eni.zylim.encheres.dal;
 
 import fr.eni.zylim.encheres.dal.jdbc.UtilisateurDAOJdbcImpl;
 
-public class UtilisateurDAOFactory {
+public class DAOFactory {
 	
 //	/**
 //	 * Fournit une instance d'une classe

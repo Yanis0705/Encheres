@@ -10,14 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ConnexionUtilisateurServlet
  */
-<<<<<<< Updated upstream
-@WebServlet("/connexionutilisateur")
-=======
 @WebServlet(
 		name = "Connexion",
-		urlPatterns = { "/connect" }
+		urlPatterns = { "/connexionutilisateur" }
 		)
->>>>>>> Stashed changes
+
 public class ConnexionUtilisateurServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
