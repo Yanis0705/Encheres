@@ -1,4 +1,3 @@
-@charset "UTF-8";
 body
 {
  margin:0 auto;
@@ -6,12 +5,12 @@ body
  text-align:center;
  width:100%;
  font-family: "Myriad Pro","Helvetica Neue",Helvetica,Arial,Sans-Serif;
- background-color:#5c6b73;
+ background-color:#22486c;
 }
 
 .container {
   width: 250px;
-  border: 5px solid #5c6b73;
+  border: 5px solid #22486c;
   border-radius: .5em;
   padding: 10px;
   display: flex;
@@ -28,8 +27,8 @@ body
   width:100%;
   height: 10px;
   padding: 10px;
-  background-color: #5c6b73);
-  border: 2px solid #5c6b73;
+  background-color: #22486c);
+  border: 2px solid #22486c;
 }
 
 #wrapper
@@ -44,7 +43,7 @@ body
 {
  margin-top:50px;
  font-size:45px;
- color:#424949;
+ color:#22486c;
 }
 #wrapper h1 p
 {
@@ -57,7 +56,7 @@ font-size:18px;
 width:330px;
 margin-left:320px;
 padding:10px;
-background-color:#5c6b73;
+background-color:#22486c;
 }
 .form_div .form_label
 {
@@ -87,8 +86,8 @@ height:40px;
 border:none;
 border-radius:4px;
 font-size:17px;
-background-color:#7F8C8D;
-border-bottom:3px solid #616A6B;
+background-color:#509534;
+border-bottom:3px solid #509534;
 color:white;
 font-weight:bold;
 }
@@ -99,8 +98,8 @@ height:40px;
 border:none;
 border-radius:4px;
 font-size:17px;
-background-color:#7F8C8D;
-border-bottom:3px solid #616A6B;
+background-color:#509534;
+border-bottom:3px solid #509534;
 color:white;
 font-weight:bold;
 }
