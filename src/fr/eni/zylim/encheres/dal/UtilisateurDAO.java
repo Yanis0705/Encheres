@@ -10,6 +10,6 @@ public interface UtilisateurDAO {
 
 	List<Utilisateur> selectAllUtilisateurs() throws DALException;
 
-	List<fr.eni.zylim.encheres.bll.Utilisateur> selectUtilisateur();
+
 
 }

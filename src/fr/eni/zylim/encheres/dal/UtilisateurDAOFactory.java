@@ -12,15 +12,5 @@ public class UtilisateurDAOFactory {
 	}
 
 
-//	/**
-//	 * Fournit une instance d'une classe
-//	 * se comportant comme un RepasDAO
-//	 * 
-//	 * @return Une instance
-//	 */
-//	public static UtilisateurDAO getRepasDAO() {
-//		
-//		return new UtilisateurDAOJdbcImpl();
-//	}
 
 }
