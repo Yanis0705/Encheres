@@ -4,76 +4,17 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0" />
-<link rel="stylesheet" type="text/css" href="Inscription.css">
+ <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<style><%@include file="/style/Inscription.css"%></style>
 
 <title>Inscription</title>
 
-<style media="screen">
-body{
- background-color:#6E6E6E;
- font-family:roboto;
-}
-body p{
- text-align:center;
- margin-top:30px;
- font-size:40px;
- color:#E6E6E6;
-}
-table{
- border-radius:3px;
- box-shadow:0px 0px 10px 0px;
- padding:10px;
- background-color:#848484;
-}
-table td{
- font-size:20px;
- color:#E6E6E6;
-}
-table th{
- visibility:hidden;
- display:none;
-}
-input[type="text"]{
- width:200px;
- height:35px;
- border:1px solid silver;
- border-radius:3px;
- font-size:17px;
- padding:5px;
-}
-This style is for screen size having minimum width of 180px and maximum width of 679px.
 
-@media only screen and (min-width:180px) and (max-width:679px)
-{
-table{
- width:100%;
-}
-table .column1{
- visibility:hidden;
- display:none;
-}
-table th{
- visibility:visible;
- display:block;
- font-size:20px;
- color:#E6E6E6;
-}
-input[type="text"]{
- width:80%;
- margin-left:10%;
-}
-
-boutonsInscription{
-	display : flex;
-	justify-content:center;
-	margin: 20px, 0;
-}
-
-
-</style>
+ 
 </head>
   <body>
+
+ 
   
   <h3><a href="/WEB-INF/jsp/Inscription.jsp">Troc-enchères.org</a></h3>
   
@@ -151,7 +92,7 @@ boutonsInscription{
 	</div>
 	
 	<div>
-		<a href="<%=getServletContext().getContextPath()%>/Connexion.jsp">
+		<a href="href="/WEB-INF/jsp/Inscription.jsp">
 			<button type="submit"  >Annuler</button>
 		</a>
 	</div>
