@@ -70,10 +70,7 @@ boutonsInscription{
 	margin: 20px, 0;
 }
 
-h4{
-	display:flex;
-	justify-content: center;
-}
+
 
 
 </style>
