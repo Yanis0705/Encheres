@@ -200,7 +200,7 @@ input[type=submit] {
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    <form>
+    <form action="ConnexionUtilisateurServlet.java" method="POST">
         <h3>ENI-Enchéres</h3>
 
         <label for="username">Identifiant</label>
