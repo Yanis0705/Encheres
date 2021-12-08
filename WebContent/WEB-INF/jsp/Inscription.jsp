@@ -71,13 +71,11 @@ boutonsInscription{
 }
 
 
-
-
 </style>
 </head>
   <body>
   
-  <h3 href="/WEB-INF/jsp/Inscription.jsp">Troc-enchères.org </h3>
+  <h3><a href="/WEB-INF/jsp/Inscription.jsp">Troc-enchères.org</a></h3>
   
    <h4>Créer un compte</h4>
    
