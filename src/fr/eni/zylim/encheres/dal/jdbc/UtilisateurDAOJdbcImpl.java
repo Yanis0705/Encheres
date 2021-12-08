@@ -14,7 +14,7 @@ import fr.eni.zylim.encheres.bo.Utilisateur;
 import fr.eni.zylim.encheres.dal.DALException;
 import fr.eni.zylim.encheres.dal.UtilisateurDAO;
 
-public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
+public abstract class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 	private static final String SQL_SELECT_ALL_UTILISATEUR = "select * from UTILISATEURS)" ;
 	
@@ -56,8 +56,8 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			// si c'est un nouveau repas 
 			if (idRepas != idRepasEnCours) {
 				LocalDateTime momentRepas = tableResulante.getTimestamp("dateheure").toLocalDateTime();
-				nouveauRepas = new Repas(idRepas, momentRepas);
-				listeDesRepas.add(nouveauRepas); // ajouter le nouveau repas à la liste
+				//nouveauRepas = new Repas(idRepas, momentRepas);
+				//listeDesRepas.add(nouveauRepas); // ajouter le nouveau repas à la liste
 				idRepasEnCours = idRepas; // ce repas devient le repas en cours
 			}
 
@@ -65,10 +65,10 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			int idAliment = tableResulante.getInt("id_aliment");
 			String nomAliment = tableResulante.getString("nom");
 			
-			nouvelAliment = new Aliment(idAliment, nomAliment);
+			//nouvelAliment = new Aliment(idAliment, nomAliment);
 			
 			//Ajouter ce nouvel aliment au repas en cours
-			nouveauUtilisateur.getListeAliments().add(nouvelAliment);
+			//nouveauUtilisateur.getListeAliments().add(nouvelAliment);
 			}
 		
 		
@@ -79,11 +79,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		return listeUtilisateur;
 	}
 
-	@Override
-	public List<fr.eni.zylim.encheres.bll.Utilisateur> selectUtilisateur() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 
 
