@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+
 <html>
 <head>
+
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <style><%@include file="/style/responsive_style_marion.css"%></style> 
 
@@ -34,7 +35,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="row">Fin de l'enchère : </th>
-                                    <td>09/10/2018></td>
+                                    <td>09/10/2018</td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Retrait : </th>
@@ -66,9 +67,6 @@
                         </div>
                 </form>
         </div>
-
     </div>
-
-
 </body>
 </html>
