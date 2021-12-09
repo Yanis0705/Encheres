@@ -50,13 +50,13 @@
                         <div class="container column">
                             <div class="item">
                                 <p>
-                                    <input type="button" value="Retrait effectué">
+                                    <input type="submit" value="Retrait effectué">
                                 </p>
                             </div>
 
                             <div class="item">
                                 <p>
-                                    <input type="button" value="Contacter jojo44">
+                                    <input type="submit" value="Contacter jojo44">
                                 </p>
                             </div>
                             <div class="item">
