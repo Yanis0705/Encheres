@@ -46,15 +46,15 @@ public class UtilisateurManager {
 	 */
 	public static List<Utilisateur> listeUtilisateurs() {
 
-		List<Utilisateur> lesUtilisateur = new ArrayList<Utilisateur>();
+		List<Utilisateur> lesUtilisateurs = new ArrayList<Utilisateur>();
 
 		try {
-			lesUtilisateur = dao.selectAllUtilisateurs();
+			lesUtilisateurs = dao.selectAllUtilisateurs();
 		} catch (DALException dale) {
 			dale.printStackTrace();
 		}
 
-		return lesUtilisateur;
+		return lesUtilisateurs;
 
 	}
 	
