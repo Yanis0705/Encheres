@@ -16,7 +16,7 @@ import fr.eni.zylim.encheres.dal.DALException;
 import fr.eni.zylim.encheres.dal.EnchereDAO;
 import fr.eni.zylim.encheres.dal.UtilisateurDAO;
 
-public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
+public  class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 	private static final String SQL_SELECT_ALL_UTILISATEUR = "select * from UTILISATEURS";
 	private static final String SQL_INSERT_TO_UTILISATEUR = 	"INSERT INTO UTILISATEURS VALUES (pseudo,nom, prenom,  email,telephone,rue, code_postal,ville, mot_de_passe, administrateur)";
@@ -177,7 +177,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	}
 
 
-public Utilisateur utilisateurBuilder(ResultSet rs) throws SQLException
+public Utilisateur utilisateurBuilder(ResultSet rs) throws DALException
 {
 	/*List<ArticleVendu> articlesVendus = this.getArticlesVendusUtilisateur(rs.getInt("no_utilisateur"));
 	List<ArticleVendu> articlesAchetes = this.getArticlesAchetesUtilisateur(rs.getInt("no_utilisateur"));
