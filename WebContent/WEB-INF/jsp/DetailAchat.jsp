@@ -54,7 +54,7 @@
                                    <tr>
                                     <th scope="row">Ma proposition :</th>
                                     <td><input type="number" min="0" max="100000"></td>
-                                    <!--  <td><input type="button" value="Enchérir"></td> pb : mettre le button à right-->
+                                    <!--  <td><input type="submit" value="Enchérir"></td> pb : mettre le button à right-->
                                	 </tr>
                             </tbody>
                         </table>

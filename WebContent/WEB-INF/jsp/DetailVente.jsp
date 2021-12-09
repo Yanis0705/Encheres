@@ -48,7 +48,7 @@
                         <div class="container column">
                             <div class="item">
                                 <p>
-                                    <input type="button" value="Annuler la vente">
+                                    <input type="submit" value="Annuler la vente">
                                 </p>
                             </div>
 
