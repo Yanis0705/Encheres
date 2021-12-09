@@ -91,12 +91,12 @@
 		</a>
 	</div>
 	
-	<div>
-		<a href="/WEB-INF/jsp/Inscription.jsp">
-			<button type="submit"  >Annuler</button>
-		</a>
-	</div>
+
 </div>
 </form>
+  <DIV class="item" "><form name="main0" action="consulteraccueilconnexion" method="get">
+        <input type="submit" value="Annuler">
+    </form></DIV>
+
   </body>
 </html>
