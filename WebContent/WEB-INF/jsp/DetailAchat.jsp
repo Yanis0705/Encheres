@@ -48,12 +48,12 @@
                                     <td>10 allée des Alouettes<br>44800 Saint-Herblain</td>
                                 </tr>
                                    <tr>
-                                    <th scope="row">Fin de l'enchère :</th>
-                                    <td>09/10/2018</td>
+                                    <th scope="row">Vendeur :</th>
+                                    <td>jojo44</td>
                                 </tr>
                                    <tr>
-                                    <th scope="row">Fin de l'enchère :</th>
-                                    <td>09/10/2018</td>
+                                    <th scope="row">Ma proposition :</th>
+                                    <td><input type="number" min="0" max="100000"></td>
                                 </tr>
                             </tbody>
                         </table>
