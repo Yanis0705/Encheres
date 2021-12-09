@@ -11,33 +11,27 @@
 <title>Page connexion</title>
 </head>
 <body>
+<div id="wrapper">
 
-    <div class="background">
-        <div class="shape"></div>
-        <div class="shape"></div>
-    </div>
-    <form action="ConnexionUtilisateurServlet.java" method="POST">
-        <h3>ENI-Enchéres</h3>
+<div class="form_div">
+<p class="form_label">Enchères</p>
+<form method="post" action="">
+<p><input type="text" placeholder="Enter Email"></p>
+<p><input type="password" placeholder="**********"></p>
 
-        <label for="username">Identifiant</label>
-        <input type="text" placeholder="Email or Phone" id="username">
+ <div><input type="checkbox" checked="checked">
+  <span class="checkmark">se souvenir de moi</span>
+  </div>
+<a href="https://example.com">Mot de passe oublier</a></li>
+  <div class="container column">
+<div class="item"><p><input type="submit" value="connexion"></p></div>
 
-        <label for="password">Mot de passe</label>
-        <input type="password" placeholder="Password" id="password">
-		<div>
-  
-  
- 
-<label class="container">Se souvenir de moi
-  <input type="checkbox" checked="checked">
-  <span class="checkmark"></span>
-</label>
-<a href="Motdepasseoublié.html">Mot de passe oublié</a>
- <input type="submit" value="Connexion"/>
-       
-		 <button>Crée un compte</button>
-       
-    </form>
+</div>
+</form>
+
+    <DIV class="item" "><form name="main0" action="ajouterutilisateur" method="get">
+        <input type="submit" value="cree un compte">
+    </form></DIV>
 
 </body>
 </html>
