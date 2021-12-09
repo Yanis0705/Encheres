@@ -86,13 +86,13 @@
 
 <div class="boutonsInscription">
 	<div>
-		<a href="<%=getServletContext().getContextPath()%>/Utilisateur.jsp">
+		<a href="/WEB-INF/jsp/Utilisateur.jsp">
 			<button type="submit"  >Créer</button>
 		</a>
 	</div>
 	
 	<div>
-		<a href="href="/WEB-INF/jsp/Inscription.jsp">
+		<a href="/WEB-INF/jsp/Inscription.jsp">
 			<button type="submit"  >Annuler</button>
 		</a>
 	</div>

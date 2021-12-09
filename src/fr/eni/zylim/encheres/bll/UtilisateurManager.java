@@ -57,4 +57,22 @@ public class UtilisateurManager {
 		return lesUtilisateur;
 
 	}
+	
+	public static Utilisateur getUtilisateur(int id) throws BLLException {
+		BLLException ex = new BLLException();
+
+		//validationId(id, ex);
+
+		if(ex.hasErreur()) {
+		throw ex;
+		}
+
+		try {
+		return dao.selectUtilisateurById(id);
+		} catch (DALException e) {
+		e.printStackTrace();
+		ex.ajouterErreur(e);
+		throw ex;
+		}
+		}
 }
