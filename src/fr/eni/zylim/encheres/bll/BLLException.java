@@ -45,4 +45,14 @@ public class BLLException extends Exception {
 
 
 }
+
+	public void ajouterErreur(ParameterException parameterException) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public boolean hasErreur() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
