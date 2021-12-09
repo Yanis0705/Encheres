@@ -26,8 +26,16 @@ public class DetailVenteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		//TODO if selon utilisateur connecté ou non 
+		//getServletContext().getRequestDispatcher("/WEB-INF/jsp/Vendu.jsp").forward(request, response);
+
+
+		//TODO faire un if pour le choix de la jsp en fo,nction de l'état de vente
 		
 		getServletContext().getRequestDispatcher("/WEB-INF/jsp/Vendu.jsp").forward(request, response);
+		//getServletContext().getRequestDispatcher("/WEB-INF/jsp/DetailVente.jsp").forward(request, response);
+
 	}
 
 	/**
