@@ -4,34 +4,35 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-<style><%@include file="/style/responsive_style.css"%></style> 
+<style><%@include file="/style/responsive_style_marion.css"%></style> 
 
 <title>Vendu</title>
 </head>
 <body>
-	<nav class="navbar navbar-light bg-light">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="#">Troc-enchères</a>
-		</div>
-	</nav>
+	<div id="wrapper">
 	
-	<div class="card" style="width: 18rem;">
-  <img src="/*****" class="card-img-top" alt="Rocket stove">
-  <div class="card-body">
-    <h5 class="card-title">Rocket stove</h5>
-    <p class="card-text">Meilleure offre : 210 pts par <a href="#" class="card-link">jojo44</a></p>
-     <p class="card-text">Mise à prix : 185 points</p>
-      <p class="card-text">Fin de l'enchère : 09/10/2018</p>
-       <p class="card-text">Retrait : 5 rue des Pinsons <br>44000 Nantes</p>
-        <p class="card-text">Vendeur : NineJea</p>
-   </div>
-   <div><button type="button" class="btn btn-primary btn-lg">Retrait effectué</button>
-<button type="button" class="btn btn-secondary btn-lg">Contacter jojo44</button>
-<button type="button" class="btn btn-secondary btn-lg">Retour</button>
-</div>
-</div>
-
-
-
-</body>
+		<div class="form_div">
+			<p class="form_label"><a href="#">Troc-enchères</a><p>
+			<div class="title"><p>Jojo44 a remporté l'enchère !</p></div>
+			
+			<form method="post" action="">
+			<p>
+			 <img src="/*****" class="picture" alt="Rocket stove">
+			</p>
+			<div>
+					<p class="text">Meilleure offre : 210 pts par <a href="#" class="card-link">jojo44</a></p>
+     				<p class="text">Mise à prix : 185 points</p>
+      				<p class="text">Fin de l'enchère : 09/10/2018</p>
+       				<p class="text">Retrait : 5 rue des Pinsons <br>44000 Nantes</p>
+        			<p class="text">Vendeur : NineJea</p>
+			</div>
+			   <div><button type="button" class="form_div">Retrait effectué</button>
+					<button type="button" class="form_div">Contacter jojo44</button>
+					<button type="button" class="form_div">Retour</button>
+				</div>
+			</form>
+			
+		</div>
+	</div>
+	</body>
 </html>
