@@ -58,39 +58,39 @@ public class ArticlelManager {
 		}
 	}
 
-public Article addArticle(String nom_article, String description, Date date_debut_encheres,
-		Date date_fin_encheres, int prix_initial, int no_utilisateur, int no_categorie,
-		boolean etat_vente) throws BLLException {
-
-BLLException ex = new BLLException();
-
-validationNomArticle(nom_article, ex);
-validationDescription(description, ex);		
-validationDateDebutEnchere(date_debut_encheres, ex);
-validationDateFinEncheres(date_fin_encheres, ex);
-validationPrixInitial(prix_initial, ex);
-
-Article article;
-article = new Article(nom_article, description, date_debut_encheres,
-		date_fin_encheres, prix_initial, no_utilisateur, no_categorie,
-		etat_vente);
-
-// TODO intégrer le retrait
-
-if(ex.hasErreur()) {
-throw ex;
-}
-
-try {
-dao.insertArticle(article);
-} catch (DALException e) {
-e.printStackTrace();
-ex.ajouterErreur(e);
-throw ex;
-}
-
-return article;
-}
+//public Article addArticle(String nom_article, String description, Date date_debut_encheres,
+//		Date date_fin_encheres, int prix_initial, int no_utilisateur, int no_categorie,
+//		boolean etat_vente) throws BLLException {
+//
+//BLLException ex = new BLLException();
+//
+//validationNomArticle(nom_article, ex);
+//validationDescription(description, ex);		
+//validationDateDebutEnchere(date_debut_encheres, ex);
+//validationDateFinEncheres(date_fin_encheres, ex);
+//validationPrixInitial(prix_initial, ex);
+//
+//Article article;
+//article = new Article(nom_article, description, date_debut_encheres,
+//		date_fin_encheres, prix_initial, no_utilisateur, no_categorie,
+//		etat_vente);
+//
+//// TODO intégrer le retrait
+//
+//if(ex.hasErreur()) {
+//throw ex;
+//}
+//
+//try {
+//dao.insertArticle(article);
+//} catch (DALException e) {
+//e.printStackTrace();
+//ex.ajouterErreur(e);
+//throw ex;
+//}
+//
+//return article;
+//}
 
 }
 
