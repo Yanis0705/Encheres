@@ -1,5 +1,7 @@
 package fr.eni.zylim.encheres.bll;
 
+import fr.eni.zylim.encheres.dal.DALException;
+
 public class BLLException extends Exception {
 
 	public BLLException() {
@@ -17,6 +19,14 @@ public class BLLException extends Exception {
 		super(message, cause);
 	}
 
+	public boolean hasErreur() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
+	public void ajouterErreur(DALException e) {
+		// TODO Auto-generated method stub
+
+	}
 
 }

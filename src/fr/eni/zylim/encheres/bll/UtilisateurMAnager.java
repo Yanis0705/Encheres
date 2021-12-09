@@ -2,7 +2,6 @@ package fr.eni.zylim.encheres.bll;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import fr.eni.zylim.encheres.bo.Utilisateur;
 import fr.eni.zylim.encheres.dal.DALException;
 import fr.eni.zylim.encheres.dal.UtilisateurDAO;
@@ -13,7 +12,7 @@ import fr.eni.zylim.encheres.dal.UtilisateurDAOFactory;
  * The Class UtilisateurMAnager.
  */
 public class UtilisateurMAnager {
-	
+
 	/** The instance. */
 	private static UtilisateurMAnager instance;
 
@@ -57,4 +56,7 @@ public class UtilisateurMAnager {
 		return lesUtilisateur;
 
 	}
+
+
+
 }

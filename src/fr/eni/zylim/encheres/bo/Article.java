@@ -3,18 +3,18 @@ package fr.eni.zylim.encheres.bo;
 import java.sql.Date;
 
 public class Article {
-	private int no_article ;
-	private String nom_article ;
-	private String description ;
+	private int no_article;
+	private String nom_article;
+	private String description;
 	private Date date_debut_encheres;
-	private Date date_fin_encheres ;
+	private Date date_fin_encheres;
 
-	private int prix_initial ;
-	private int prix_vente ;
-	private int no_utilisateur ;
-	private int no_categorie ;
+	private int prix_initial;
+	private int prix_vente;
+	private int no_utilisateur;
+	private int no_categorie;
 	private Retrait retrait;
-	
+
 	public int getNo_article() {
 		return no_article;
 	}
@@ -122,6 +122,5 @@ public class Article {
 		this.no_categorie = no_categorie;
 		this.retrait = retrait;
 	}
-	
-	
+
 }
