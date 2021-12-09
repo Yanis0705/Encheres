@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import fr.eni.zylim.encheres.bo.Retrait;
 import fr.eni.zylim.encheres.bo.Article;
 import fr.eni.zylim.encheres.dal.ArticleDAO;
 import fr.eni.zylim.encheres.dal.DALException;
@@ -58,8 +58,9 @@ public class ArticleDAOJdbcImpl implements ArticleDAO{
 				int no_utilisateur = rs.getInt("no_utilisateur");
 				int no_categorie = rs.getInt("qteStock");
 				boolean etat_vente = rs.getBoolean("etat_vente");
+				Retrait retrait =  (Retrait) rs.getObject("retrait");
 				
-				article = new Article(no_article, nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente,  no_utilisateur, no_categorie, etat_vente);
+				article = new Article(no_article, nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente,  no_utilisateur, no_categorie, etat_vente, retrait);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -91,8 +92,9 @@ public class ArticleDAOJdbcImpl implements ArticleDAO{
 				int no_utilisateur = rs.getInt("no_utilisateur");
 				int no_categorie = rs.getInt("qteStock");
 				boolean etat_vente = rs.getBoolean("etat_vente");
+				Retrait retrait = (Retrait) rs.getObject("retrait");
 				
-				Article article = new Article(no_article, nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente,  no_utilisateur, no_categorie, etat_vente);
+				Article article = new Article(no_article, nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente,   no_utilisateur, no_categorie, etat_vente, retrait);
 				
 				articles.add(article);
 			}			

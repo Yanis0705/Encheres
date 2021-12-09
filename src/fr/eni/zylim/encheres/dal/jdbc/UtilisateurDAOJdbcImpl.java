@@ -185,7 +185,9 @@ public Utilisateur utilisateurBuilder(ResultSet rs) throws DALException
 	
 	Utilisateur utilisateur = new Utilisateur();
 	
-	utilisateur.setNo_utilisateur(rs.getInt("no_utilisateur"));
+	try {
+		utilisateur.setNo_utilisateur(rs.getInt("no_utilisateur"));
+
 	utilisateur.setPseudo(rs.getString("pseudo"));
 	utilisateur.setNom(rs.getString("nom"));
 	utilisateur.setPrenom(rs.getString("prenom"));
@@ -200,7 +202,10 @@ public Utilisateur utilisateurBuilder(ResultSet rs) throws DALException
 //	utilisateur.setArticlesVendus(articlesVendus);
 //	utilisateur.setArticlesAchetes(articlesAchetes);
 //	utilisateur.setEncheres(encheres);
-	
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	
 	return utilisateur;
 

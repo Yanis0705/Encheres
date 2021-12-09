@@ -13,7 +13,7 @@ public class Testmetier {
 		// Instanciation du jeu d'essai
 			
 				// Instanciation du jeu d'essai
-				List<Utilisateur> Utils = utilimpl.selectByPseudo("toto");
+				List<Utilisateur> Utils = (List<Utilisateur>) utilimpl.selectUtilisateuByPseudo("toto");
 				for(Utilisateur U:Utils)
 					System.out.println(U.getNom());
 				
