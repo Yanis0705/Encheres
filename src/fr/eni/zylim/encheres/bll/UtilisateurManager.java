@@ -55,6 +55,11 @@ public class UtilisateurManager {
 
 	}
 
+	public static Utilisateur getUtilisateur(int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 

@@ -43,14 +43,9 @@ public class ConsulterUtilisateurServlet extends HttpServlet {
 				
 
 					Utilisateur utilisateur;
-					try {
-						UtilisateurManager.getInstance();
-						utilisateur = UtilisateurManager.getUtilisateur(3);
-						System.out.println(utilisateur);
-					} catch (BLLException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					UtilisateurManager.getInstance();
+					utilisateur = UtilisateurManager.getUtilisateur(3);
+					System.out.println(utilisateur);
 					
 
 				

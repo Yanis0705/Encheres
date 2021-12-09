@@ -22,7 +22,7 @@ public  class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private static final String SQL_INSERT_TO_UTILISATEUR = 	"INSERT INTO UTILISATEURS VALUES (pseudo,nom, prenom,  email,telephone,rue, code_postal,ville, mot_de_passe, administrateur)";
 	private static final String SQL_SELECT_UTILISATEUR_BY_ID =  "SELECT * FROM UTILISATEURS u   WHERE u.no_utilisateur = ?";
 	private static final String SQL_UPDATE_UTILISATEUR = "UPDATE UTILISATEURS SET nom=?, prenom=?,"
-																		+ "email=?, telephone=?, rue=?, code_postal=?, ville=?," + " mot_de_passe=?, credit=?, administrateur=? WHERE no_utilisateur=?";
+																														+ "email=?, telephone=?, rue=?, code_postal=?, ville=?," + " mot_de_passe=?, credit=?, administrateur=? WHERE no_utilisateur=?";
 	private static final String SQL_DELETE_UTILISATEUR= "DELETE UTILISATEURS WHERE no_utilisateur=?";
 	private static final String SQL_GET_ARTICLES_VENDUS_BY_UTILISATEUR_ID = "select * from ARTICLES_VENDUS WHERE no_utilisateur=?";
 	private static final String SQL_GET_UTILISATEUR_BY_PSEUDO ="select * from UTILISATEURS WHERE pseudo=? ";
