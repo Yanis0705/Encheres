@@ -1,2 +1,9 @@
-.metadata/
-build/
+
+*.class
+build/classes/fr/eni/zylim/encheres/dal/jdbc/UtilisateurDAOJdbcImpl.class
+build/classes/fr/eni/zylim/encheres/dal/UtilisateurDAO.class
+build/classes/fr/eni/zylim/encheres/dal/UtilisateurDAO.class
+build/classes/fr/eni/zylim/encheres/servlet/ConsulterUtilisateurServlet.class
+build/classes/fr/eni/zylim/encheres/bo/Utilisateur.class
+*.class
+build/classes/fr/eni/zylim/encheres/bo/Utilisateur.class

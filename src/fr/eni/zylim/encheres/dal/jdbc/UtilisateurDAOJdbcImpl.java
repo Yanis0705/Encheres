@@ -9,16 +9,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.zylim.encheres.dal.jdbc.ConnectionProvider;
-
 import fr.eni.zylim.encheres.bo.Utilisateur;
 import fr.eni.zylim.encheres.dal.DALException;
 import fr.eni.zylim.encheres.dal.UtilisateurDAO;
 
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
-
 	private static final String SQL_SELECT_ALL_UTILISATEUR = "select * from UTILISATEURS )";
 	private static final String SQL_SELECT_BYPSEUDO_UTILISATEUR = "select * from UTILISATEURS where pseudo like ?)";
 
+	private static final String SQL_INSERT_TO_UTILISATEUR = 	"INSERT INTO UTILISATEURS VALUES (pseudo,nom, prenom,  email,telephone,rue, code_postal,ville, mot_de_passe, administrateur)";
+	
+	private static final String SQL_SELECT_ARTICLE_BY_ID =  "SELECT * FROM UTILISATEURS u   WHERE u.no_utilisateur = ?";
+	
 	public UtilisateurDAOJdbcImpl() {
 
 	}
@@ -112,6 +114,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	}
 
 	
+
 
 
 }
