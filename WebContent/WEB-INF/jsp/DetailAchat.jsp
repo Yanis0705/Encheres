@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-<style><%@include file="/style/responsive_style.css"%></style>
+<style><%@include file="/style/responsive_style_marion.css"%></style>
 
 <title>Detail Achat</title>
 </head>
@@ -54,19 +54,14 @@
                                    <tr>
                                     <th scope="row">Ma proposition :</th>
                                     <td><input type="number" min="0" max="100000"></td>
-                                </tr>
+                                    <!--  <td><input type="button" value="Enchérir"></td> pb : mettre le button à right-->
+                               	 </tr>
                             </tbody>
                         </table>
                         <div class="container column">
                             <div class="item">
                                 <p>
-                                    <input type="button" value="Annuler la vente">
-                                </p>
-                            </div>
-
-                            <div class="item">
-                                <p>
-                                    <input type="button" value="Retour">
+                                    <input type="button" value="Retour" >
                                 </p>
                             </div>
                         </div>

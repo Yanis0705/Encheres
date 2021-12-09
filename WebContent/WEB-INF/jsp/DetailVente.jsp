@@ -6,7 +6,7 @@
 
 
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-<style><%@include file="/style/responsive_style.css"%></style>
+<style><%@include file="/style/responsive_style_marion.css"%></style>
 
 <title>Detail vente</title>
 </head>

@@ -26,7 +26,8 @@ public class DetailAchatServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		getServletContext().getRequestDispatcher("/WEB-INF/jsp/DetailAchat.jsp").forward(request, response);
+		//getServletContext().getRequestDispatcher("/WEB-INF/jsp/DetailAchat.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/WEB-INF/jsp/Achat.jsp").forward(request, response);
 	}
 
 	/**
