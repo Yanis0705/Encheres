@@ -2,7 +2,6 @@ package fr.eni.zylim.encheres.bll;
 
 import java.sql.Date;
 import java.util.List;
-
 import fr.eni.zylim.encheres.bo.Article;
 import fr.eni.zylim.encheres.dal.ArticleDAO;
 import fr.eni.zylim.encheres.dal.DALException;
@@ -107,5 +106,6 @@ public class ArticlelManager {
 
 
 
+	private static ArticlelManager instance;
 
-
+}
