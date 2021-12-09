@@ -106,6 +106,6 @@ public class ArticlelManager {
 
 
 
-	private static ArticlelManager instance;
+	
 
-}
+
