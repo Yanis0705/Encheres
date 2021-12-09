@@ -4,17 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import fr.eni.zylim.encheres.bo.Utilisateur;
 import fr.eni.zylim.encheres.dal.DALException;
+import fr.eni.zylim.encheres.dal.DAOFactory;
 import fr.eni.zylim.encheres.dal.UtilisateurDAO;
-import fr.eni.zylim.encheres.dal.UtilisateurDAOFactory;
 
-// TODO: Auto-generated Javadoc
-/**
- * The Class UtilisateurMAnager.
- */
-public class UtilisateurMAnager {
 
-	/** The instance. */
-	private static UtilisateurMAnager instance;
+
+public class UtilisateurManager {
+	
+/** The instance. */
+	private static UtilisateurManager instance;
 
 	/** The dao. */
 	private static UtilisateurDAO dao;
@@ -22,8 +20,8 @@ public class UtilisateurMAnager {
 	/**
 	 * Instantiates a new utilisateur M anager.
 	 */
-	private UtilisateurMAnager() {
-		dao = UtilisateurDAOFactory.getUtilisateurDAO();
+	private UtilisateurManager() {
+		dao = DAOFactory.getUtilisateurDAO();
 	};
 
 	/**
@@ -31,9 +29,9 @@ public class UtilisateurMAnager {
 	 *
 	 * @return single instance of UtilisateurMAnager
 	 */
-	public static UtilisateurMAnager getInstance() {
+	public static UtilisateurManager getInstance() {
 		if (instance == null) {
-			instance = new UtilisateurMAnager();
+			instance = new UtilisateurManager();
 		}
 		return instance;
 	}

@@ -26,8 +26,9 @@ public class DetailVenteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		getServletContext().getRequestDispatcher("/WEB-INF/jsp/Vendu.jsp").forward(request, response);
+		//TODO if selon utilisateur connecté ou non 
+		//getServletContext().getRequestDispatcher("/WEB-INF/jsp/Vendu.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/WEB-INF/jsp/DetailVente.jsp").forward(request, response);
 	}
 
 	/**

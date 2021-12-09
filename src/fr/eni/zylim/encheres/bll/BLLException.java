@@ -1,8 +1,13 @@
 package fr.eni.zylim.encheres.bll;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.eni.zylim.encheres.dal.DALException;
 
 public class BLLException extends Exception {
+	
+	private List<Exception> erreurs = new ArrayList<Exception>();
 
 	public BLLException() {
 	}
@@ -19,14 +24,25 @@ public class BLLException extends Exception {
 		super(message, cause);
 	}
 
-	public boolean hasErreur() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+
 
 	public void ajouterErreur(DALException e) {
 		// TODO Auto-generated method stub
 
-	}
 
+	/**
+	 * Ajoute une exception � la liste d'exception.
+	 * @param e L'exception � ajouter.
+	 */
+	
+	
+	/**
+	 * Indique si la liste des erreurs est vide ou non
+	 * @return true s'il y a des erreurs, false sinon.
+	 */
+
+
+
+
+}
 }
