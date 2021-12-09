@@ -8,6 +8,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+
+
 /**
  * Singleton
  *
@@ -17,12 +19,13 @@ public class ConnectionProvider {
 	private static final String POOL_RACINE_JNDI = "java:comp/env/";
 	private static final String POOL_NOM_JNDI = "jdbc/encheresPool";// <-- seul ceci change entre 2 applications
 	
-	private static DataSource dataSource ; /// pool de connexions auquel demander les connexions
+	private DataSource dataSource ; /// pool de connexions auquel demander les connexions
 	
 	private static ConnectionProvider instance;
 	
 
 	private ConnectionProvider () {
+		
 		
 		// Obtenir l'annuaire JNDI
 		Context annuaire = null;
@@ -63,9 +66,10 @@ public class ConnectionProvider {
 		
 	}
 	
+}
 	
 
-}
+
 
 
 

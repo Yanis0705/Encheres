@@ -165,4 +165,37 @@ public class Utilisateur {
 		
 	
 	}
+	public Utilisateur(String pseudo, String nom, String prenom, String email, String telephone,
+			String rue, String code_postal, String ville, String mot_de_passe,boolean administrateur, int no_utilisateur) {
+		super();
+		this.no_utilisateur = no_utilisateur;
+		this.pseudo = pseudo;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.telephone = telephone;
+		this.rue = rue;
+		this.code_postal = code_postal;
+		this.ville = ville;
+		this.mot_de_passe = mot_de_passe;
+		this.administrateur = administrateur;
+	
+	}
+	
+	public Utilisateur(String nom, String prenom, String email, String telephone,
+			String rue, String code_postal, String ville, String mot_de_passe,boolean administrateur, int no_utilisateur) {
+		super();
+
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.telephone = telephone;
+		this.rue = rue;
+		this.code_postal = code_postal;
+		this.ville = ville;
+		this.mot_de_passe = mot_de_passe;
+		this.administrateur = administrateur;
+		this.no_utilisateur = no_utilisateur;
+	}
+	
 }

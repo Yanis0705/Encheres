@@ -10,7 +10,6 @@
 <title>Profil</title>
 </head>
 <%
-	Utilisateur utilisateur= request.get("listeUtilisateurs");
 
 %>    
 <body>
@@ -36,7 +35,7 @@
 
  <tr>
   <td class="column1">Prenom:</td>
-  <td><%= utilisateur.getPrenom() %></td>
+  <td><%=  %></td>
  </tr>
 
 

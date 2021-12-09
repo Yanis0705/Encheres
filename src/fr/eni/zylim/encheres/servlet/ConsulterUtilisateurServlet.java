@@ -41,27 +41,18 @@ public class ConsulterUtilisateurServlet extends HttpServlet {
 				
 			
 				
-				try {
+
 					Utilisateur utilisateur;
-					UtilisateurManager.getInstance();
-					utilisateur = UtilisateurManager.getUtilisateur(3);
-					System.out.println(utilisateur);
-				
-				// enregistre les infos dans un Utilisateur
-				
-		
-				
-					String pseudo=request.getParameter("pseudo");
-				//  recuperer les infos de l'utilisateur qu'on doit afficher
-				request.setAttribute("pseudo", pseudo);
-				
-				// Déposer les objets nécessaires aux composants suivants
-				request.setAttribute("utilisateur", utilisateur);
-				} catch (BLLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
+					try {
+						UtilisateurManager.getInstance();
+						utilisateur = UtilisateurManager.getUtilisateur(3);
+						System.out.println(utilisateur);
+					} catch (BLLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+
 				
 				getServletContext().getRequestDispatcher("/WEB-INF/jsp/Profil.jsp").forward(request, response);
 	}
