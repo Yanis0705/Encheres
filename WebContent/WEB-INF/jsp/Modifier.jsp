@@ -145,7 +145,7 @@ h4{
  
 </table>
 
-<div class="boutonsModifier">
+<%-- <div class="boutonsModifier">
 	<div>
 		<a href="<%=getServletContext().getContextPath()%>/Utilisateur.jsp">
 			<button type="submit"  >Enregistrer</button>
@@ -160,7 +160,7 @@ h4{
 	<div>
 		<a href="<%=getServletContext().getContextPath()%>/Utilisateur.jsp">
 			<button type="submit"  >Retour</button>
-		</a>
+		</a> --%>
 	</div>
 </div>
 </form>
