@@ -10,7 +10,7 @@
 <title>Profil</title>
 </head>
 <%
-
+ Utilisateur utilisateur;
 %>    
 <body>
   
@@ -23,7 +23,7 @@
 
  <tr>
   <td class="column1">Pseudo:</td>
-  <td>pseudo</td>
+  <td>Pseudo></td>
  </tr>
 
  
@@ -35,7 +35,7 @@
 
  <tr>
   <td class="column1">Prenom:</td>
-  <td><%=  %></td>
+  <td>Prenom></td>
  </tr>
 
 
@@ -70,15 +70,12 @@
  
  
 </table>
-
-<div class="boutonProfil">
-	<div>
-		<a href="<%=getServletContext().getContextPath()%>/Modifier.jsp">
-			<button type="submit"  >Modifier</button>
-		</a>
-	</div>
-	
-</div>
 </form>
+
+<DIV class="item" ">
+  <form name="main0" action="modifierutilisateur" method="get">
+        <input type="submit" value="Modifier">
+    </form>
+    </DIV>
   </body>
 </html>
