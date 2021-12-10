@@ -45,54 +45,24 @@
     									<tbody>
     										<tr>
     											<th scope="row">Vendeur :</th>
-    											<td></td>
+    											<td>jojo44</td>
     										</tr>
-    									
+    										<tr>
+    											<th scope="row">Tel :</th>
+    											<td>0606060606</td>
+    										</tr>	
     									</tbody>
-    								
     								</table>	
-    								
     								</div>
-   									 <input type="radio" name="radio" id="radio">
-    								<label for="radio">L'esprit de la radio</label>
   								</fieldset>
-						</form>
-                        
-                        
-                                <tr>
-                                    <th scope="row">Meilleure offre :</th>
-                                    <td>210 points par Bob</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Mise à prix :</th>
-                                    <td>185 points</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Fin de l'enchère :</th>
-                                    <td>09/10/2018</td>
-                                </tr>
-                                   <tr>
-                                    <th scope="row">Retrait :</th>
-                                    <td>10 allée des Alouettes<br>44800 Saint-Herblain</td>
-                                </tr>
-                                   <tr>
-                                    <th scope="row">Vendeur :</th>
-                                    <td>jojo44</td>
-                                </tr>
-                                   <tr>
-                                    <th scope="row">Ma proposition :</th>
-                                    <td><input type="number" min="0" max="100000"></td>
-                                    <!--  <td><input type="button" value="Enchérir"></td> pb : mettre le button à right-->
-                               	 </tr>
-                        
-                        <div class="container column">
+  								  <div class="container column">
                             <div class="item">
                                 <p>
-                                    <input type="button" value="Retour" >
+                                    <input type="button" value="Retrait effectué" >
                                 </p>
                             </div>
                         </div>
-                </form>
+						</form>                       
         </div>
     </div>
 </body>
