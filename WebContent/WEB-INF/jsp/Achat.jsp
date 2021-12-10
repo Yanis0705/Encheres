@@ -47,6 +47,7 @@
     											<th scope="row">Vendeur :</th>
     											<td>jojo44</td>
     										</tr>
+
     										<tr>
     											<th scope="row">Tel :</th>
     											<td>0606060606</td>
@@ -56,13 +57,16 @@
     								</div>
   								</fieldset>
   								  <div class="container column">
+
                             <div class="item">
                                 <p>
                                     <input type="button" value="Retrait effectué" >
                                 </p>
                             </div>
                         </div>
+
 						</form>                       
+
         </div>
     </div>
 </body>
