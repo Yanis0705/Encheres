@@ -47,22 +47,26 @@
     											<th scope="row">Vendeur :</th>
     											<td>jojo44</td>
     										</tr>
-    											<tr>
+
+    										<tr>
     											<th scope="row">Tel :</th>
     											<td>0606060606</td>
-    										</tr>				
-    									</tbody>						
-    								</table>
-    								</div>					
+    										</tr>	
+    									</tbody>
+    								</table>	
+    								</div>
   								</fieldset>
-  						<div class="container column">
+  								  <div class="container column">
+
                             <div class="item">
                                 <p>
-                                    <input type="button" value="Retour" >
+                                    <input type="button" value="Retrait effectué" >
                                 </p>
                             </div>
                         </div>
-						</form>                 
+
+						</form>                       
+
         </div>
     </div>
 </body>

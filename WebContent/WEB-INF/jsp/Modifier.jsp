@@ -145,24 +145,25 @@ h4{
  
 </table>
 
-<%-- <div class="boutonsModifier">
-	<div>
-		<a href="<%=getServletContext().getContextPath()%>/Utilisateur.jsp">
-			<button type="submit"  >Enregistrer</button>
-		</a>
-	</div>
-	
-	<div>
-		<a href="<%=getServletContext().getContextPath()%>/Connexion.jsp">
-			<button type="submit"  >Supprimer mon compte</button>
-		</a>
-	</div>
-	<div>
-		<a href="<%=getServletContext().getContextPath()%>/Utilisateur.jsp">
-			<button type="submit"  >Retour</button>
-		</a> --%>
-	</div>
-</div>
 </form>
+
+<DIV class="item" ">
+  <form name="main0" action="ajouterutilisateur" method="get">
+        <input type="submit" value="Enregistrer">
+    </form>
+    </DIV>
+    
+ <DIV class="item" ">
+  <form name="main0" action="connexionutilisateur" method="get">
+        <input type="submit" value="Supprimer mon compte">
+    </form>
+    </DIV>
+    
+    <DIV class="item" ">
+  <form name="main0" action="ajouterutilisateur" method="get">
+        <input type="submit" value="Retour">
+    </form>
+    </DIV>
+    
 </body>
 </html>
