@@ -19,7 +19,7 @@ import fr.eni.zylim.encheres.dal.UtilisateurDAO;
 public  class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 	private static final String SQL_SELECT_ALL_UTILISATEUR = "select * from UTILISATEURS";
-	private static final String SQL_INSERT_TO_UTILISATEUR = 	"INSERT INTO UTILISATEURS VALUES (pseudo,nom, prenom,  email,telephone,rue, code_postal,ville, mot_de_passe, administrateur)";
+	private static final String SQL_INSERT_TO_UTILISATEUR = 	"INSERT INTO UTILISATEURS VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 	private static final String SQL_SELECT_UTILISATEUR_BY_ID =  "SELECT * FROM UTILISATEURS u   WHERE u.no_utilisateur = ?";
 	private static final String SQL_UPDATE_UTILISATEUR = "UPDATE UTILISATEURS SET nom=?, prenom=?,"
 																														+ "email=?, telephone=?, rue=?, code_postal=?, ville=?," + " mot_de_passe=?, credit=?, administrateur=? WHERE no_utilisateur=?";
@@ -75,10 +75,10 @@ public  class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		try (Connection cnx = ConnectionProvider.getConnection()) {
 			PreparedStatement statement = cnx.prepareStatement(SQL_SELECT_UTILISATEUR_BY_ID);
 			statement.setInt(1, id_Utilisateur);
-			ResultSet rs = statement.executeQuery();
+			ResultSet tableResulante = statement.executeQuery();
 
-			if (rs.next()) {
-				utilisateur = utilisateurBuilder(rs);
+			if (tableResulante.next()) {
+				utilisateur = utilisateurBuilder(tableResulante);
 			}
 
 		} catch (Exception e) {
@@ -93,36 +93,45 @@ public  class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	}
 
 	@Override
-	public void insertUtilisateur(Utilisateur nouvelUtilisateur) throws DALException {
-		try (Connection cnx = ConnectionProvider.getConnection()) {
-			PreparedStatement statement = cnx.prepareStatement(SQL_INSERT_TO_UTILISATEUR, Statement.RETURN_GENERATED_KEYS);
-			statement.setString(1, nouvelUtilisateur.getPseudo());
-			statement.setString(2, nouvelUtilisateur.getNom());
-			statement.setString(3, nouvelUtilisateur.getPrenom());
-			statement.setString(4, nouvelUtilisateur.getEmail());
-			if (nouvelUtilisateur.getTelephone() != null) {
-				statement.setString(5, nouvelUtilisateur.getTelephone());
-			} else {
-				statement.setNull(5, Types.VARCHAR);
-			}
-			statement.setString(6, nouvelUtilisateur.getRue());
-			statement.setString(7, nouvelUtilisateur.getCode_postal());
-			statement.setString(8, nouvelUtilisateur.getVille());
-			statement.setString(9, nouvelUtilisateur.getMot_de_passe());
-			statement.setInt(10, nouvelUtilisateur.getCredit());
-			statement.setBoolean(11, nouvelUtilisateur.isAdministrateur());
-			statement.setInt(12, nouvelUtilisateur.getNo_utilisateur());
-
-			statement.executeUpdate();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			DALException dalException = new DALException();
-			throw dalException;
-
-		}
-
+	public void insertUtilisateur(Utilisateur nouvelUtilisateur) {
 		
+			System.out.println("START insertUtilisateur");
+			Connection cnx = ConnectionProvider.getConnection();
+			PreparedStatement ordre = null;
+			try {
+				ordre = cnx.prepareStatement(SQL_INSERT_TO_UTILISATEUR, Statement.RETURN_GENERATED_KEYS);
+
+			ordre.setString(1, nouvelUtilisateur.getPseudo());
+			ordre.setString(2, nouvelUtilisateur.getNom());
+			ordre.setString(3, nouvelUtilisateur.getPrenom());
+			ordre.setString(4, nouvelUtilisateur.getEmail());
+			if (nouvelUtilisateur.getTelephone() != null) {
+				ordre.setString(5, nouvelUtilisateur.getTelephone());
+			} else {
+				ordre.setNull(5, Types.VARCHAR);
+				}
+			ordre.setString(6, nouvelUtilisateur.getRue());
+			ordre.setString(7, nouvelUtilisateur.getCode_postal());
+			ordre.setString(8, nouvelUtilisateur.getVille());
+			ordre.setString(9, nouvelUtilisateur.getMot_de_passe());
+			ordre.setInt(10, 100);
+			ordre.setBoolean(11, nouvelUtilisateur.isAdministrateur());
+			ordre.executeUpdate();
+			System.out.println("UPDATE OK");
+			ResultSet tableResulante = ordre.getGeneratedKeys();
+
+			if (tableResulante.next()) {
+				nouvelUtilisateur.setNo_utilisateur(tableResulante.getInt(1));
+			}
+
+			ordre.close();
+			cnx.commit();
+			
+			System.out.println("STOP insertUtilisateur");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
 
 	@Override
@@ -179,15 +188,11 @@ public  class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 public Utilisateur utilisateurBuilder(ResultSet rs) throws DALException
 {
-	/*List<ArticleVendu> articlesVendus = this.getArticlesVendusUtilisateur(rs.getInt("no_utilisateur"));
-	List<ArticleVendu> articlesAchetes = this.getArticlesAchetesUtilisateur(rs.getInt("no_utilisateur"));
-	List<Enchere> encheres = this.getEncheresUtilisateur(rs.getInt("no_utilisateur"));*/
-	
+System.out.println("START utilisateurBuilder");
 	Utilisateur utilisateur = new Utilisateur();
 	
 	try {
-		utilisateur.setNo_utilisateur(rs.getInt("no_utilisateur"));
-
+	utilisateur.setNo_utilisateur(rs.getInt("no_utilisateur"));
 	utilisateur.setPseudo(rs.getString("pseudo"));
 	utilisateur.setNom(rs.getString("nom"));
 	utilisateur.setPrenom(rs.getString("prenom"));
@@ -199,18 +204,38 @@ public Utilisateur utilisateurBuilder(ResultSet rs) throws DALException
 	utilisateur.setMot_de_passe(rs.getString("mot_de_passe"));
 	utilisateur.setCredit(rs.getInt("credit"));
 	utilisateur.setAdministrateur(rs.getBoolean("administrateur"));
+// TODO A voir si besoin mais pas prioritaire pour le moment
 //	utilisateur.setArticlesVendus(articlesVendus);
 //	utilisateur.setArticlesAchetes(articlesAchetes);
 //	utilisateur.setEncheres(encheres);
 	} catch (SQLException e) {
-		// TODO Auto-generated catch block
+
 		e.printStackTrace();
 	}
-	
+	System.out.println("FIN utilisateurBuilder");
 	return utilisateur;
 
 }
 
+@Override
+public List<String> getAllPseudos() throws DALException {
+	
+	List<String> pseudos = new ArrayList<>();
+	
+	try(Connection cnx = ConnectionProvider.getConnection()) {
+		PreparedStatement statement = cnx.prepareStatement(SQL_GET_ALL_PSEUDOS);
+		
+		ResultSet rs = statement.executeQuery();
+		
+		while (rs.next()) {
+			pseudos.add(rs.getString("pseudo"));
+		}
+				
+	} catch (Exception e) {
+		// TODO: handle exception
+	}
+	return pseudos;
+}
 }
 
 
