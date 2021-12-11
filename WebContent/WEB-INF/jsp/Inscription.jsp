@@ -28,7 +28,7 @@
          </div>
     </div>
     
-  <form action="AjouterUtilisateurServlet.java" method="POST">
+  <form action="ajouterutilisateur" method="POST">
 <table align=center cellspacing=10>
 
  <tr>
@@ -87,7 +87,7 @@
 
  <tr>
   <td class="column1">Confirmation:</td>
-  <td><input type="password" placeholder="Confirmation"name="mot_de_passe"></td>
+  <td><input type="password" placeholder="Confirmation"name="mot_de_passe_confirmation"></td>
  </tr>
  
 </table>
