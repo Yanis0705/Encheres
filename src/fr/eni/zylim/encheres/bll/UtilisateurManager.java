@@ -6,6 +6,7 @@ import fr.eni.zylim.encheres.bo.Utilisateur;
 import fr.eni.zylim.encheres.dal.DALException;
 import fr.eni.zylim.encheres.dal.DAOFactory;
 import fr.eni.zylim.encheres.dal.UtilisateurDAO;
+import fr.eni.zylim.encheres.dal.jdbc.UtilisateurDAOJdbcImpl;
 
 
 
@@ -15,13 +16,13 @@ public class UtilisateurManager {
 	private static UtilisateurManager instance;
 
 	/** The dao. */
-	private static UtilisateurDAO dao;
+	private static UtilisateurDAO utilisateurDAO = new UtilisateurDAOJdbcImpl();
 
 	/**
-	 * Instantiates a new utilisateur M anager.
+	 * Instantiates a new utilisateur Manager.
 	 */
-	private UtilisateurManager() {
-		dao = DAOFactory.getUtilisateurDAO();
+	public UtilisateurManager() {
+		UtilisateurManager.utilisateurDAO = DAOFactory.getUtilisateurDAO();
 	};
 
 	/**
@@ -46,7 +47,7 @@ public class UtilisateurManager {
 		List<Utilisateur> lesUtilisateurs = new ArrayList<Utilisateur>();
 
 		try {
-			lesUtilisateurs = dao.selectAllUtilisateurs();
+			lesUtilisateurs = utilisateurDAO.selectAllUtilisateurs();
 		} catch (DALException dale) {
 			dale.printStackTrace();
 		}
@@ -58,6 +59,26 @@ public class UtilisateurManager {
 	public static Utilisateur getUtilisateur(int i) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public static List<String> selectAllPseudos() throws DALException {
+		return utilisateurDAO.getAllPseudos();
+	}
+
+	public static Utilisateur inscriptionUtilisateur(Utilisateur utilisateur) throws DALException {
+		validerCoordonnees(utilisateur);
+		//TODO Creer If pour validation des coordonnées utilisateur
+		utilisateurDAO.insertUtilisateur(utilisateur);
+		return utilisateur;
+	}
+	
+	private static void validerCoordonnees(Utilisateur utilisateur) {
+
+		if (utilisateur.getPseudo().trim().equals("") || utilisateur.getNom().trim().equals("")
+				|| utilisateur.getPrenom().trim().equals("") || utilisateur.getEmail().trim().equals("")
+				|| utilisateur.getRue().trim().equals("") || utilisateur.getCode_postal().trim().equals("")
+				|| utilisateur.getVille().trim().equals("") || utilisateur.getMot_de_passe().trim().equals("")) {
+		}
 	}
 
 
