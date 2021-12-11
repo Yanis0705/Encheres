@@ -19,7 +19,7 @@ public class UtilisateurManager {
 	private static UtilisateurDAO utilisateurDAO = new UtilisateurDAOJdbcImpl();
 
 	/**
-	 * Instantiates a new utilisateur M anager.
+	 * Instantiates a new utilisateur Manager.
 	 */
 	public UtilisateurManager() {
 		UtilisateurManager.utilisateurDAO = DAOFactory.getUtilisateurDAO();

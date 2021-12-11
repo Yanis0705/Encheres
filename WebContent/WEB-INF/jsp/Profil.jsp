@@ -7,6 +7,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<style><%@include file="/style/Profil.css"%></style>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
 <title>Profil</title>
 </head>
 <%
@@ -14,16 +17,16 @@
 %>    
 <body>
   
-  <h3><a href="/WEB-INF/jsp/Inscription.jsp">Troc-enchères.org</a></h3>
-  
-   <h4>Créer un compte</h4>
+  <h3><a href="/WEB-INF/jsp/Utilisateur.jsp">Troc-enchères.org</a></h3> 
+   <h4>recuperer le nom de la base de données</h4>
    
-  <form action="ModifierUtilisateurServlet.java" method="POST">
+ <div class="Profil">
+
 <table align=center cellspacing=10>
 
  <tr>
   <td class="column1">Pseudo:</td>
-  <td>Pseudo></td>
+  <td>Pseudo</td>
  </tr>
 
  
@@ -35,7 +38,7 @@
 
  <tr>
   <td class="column1">Prenom:</td>
-  <td>Prenom></td>
+  <td>Prenom</td>
  </tr>
 
 
@@ -53,29 +56,31 @@
 
  <tr>
   <td class="column1">Rue :</td>
-  <td>rue></td>
+  <td>rue</td>
  </tr>
 
 
  <tr>
   <td class="column1">Code Postal:</td>
-  <td>code_postal></td>
+  <td>code_postal</td>
  </tr>
  
 
  <tr>
   <td class="column1">Ville :</td>
-  <td>ville></td>
- </tr>
- 
+  <td>ville</td>
+ </tr> 
  
 </table>
-</form>
+</div> 
 
-<DIV class="item" ">
-  <form name="main0" action="modifierutilisateur" method="get">
-        <input type="submit" value="Modifier">
-    </form>
+<div>
+
+</div>
+
+<DIV><form action="modifierprofil"><button class="btn-enregistrer" >Modifier</button>
+</form>
+	
     </DIV>
   </body>
 </html>

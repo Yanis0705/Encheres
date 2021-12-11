@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+body
+{
+margin:0 auto;
+padding:0px;
+text-align:center;
+width:100%;
+font-family: 'Roboto','Open Sans',Sans-Serif;
+color: #5F634F;
+background-color:#CFEBDF;
+}

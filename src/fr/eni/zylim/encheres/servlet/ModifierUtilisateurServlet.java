@@ -27,7 +27,7 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO chemin si dessous provisoire
-				getServletContext().getRequestDispatcher("/WEB-INF/jsp/Modifier.jsp").forward(request, response);
+				
 	}
 
 	/**
@@ -35,7 +35,7 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		getServletContext().getRequestDispatcher("/WEB-INF/jsp/Utilisateur.jsp").forward(request, response);
 	}
 
 }

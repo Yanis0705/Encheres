@@ -9,16 +9,38 @@ width:100%;
 font-family: 'Roboto','Open Sans',Sans-Serif;
 color: #5F634F;
 background-color:#CFEBDF;
+
 }
 
-.boutonsCreerAnnuler{
+.formulaire{
+padding-bottom: 40px;
+}
+
+.boutonsEnregistreSupprimerrAnnuler{
 display: flex;
 justify-content: center;
-margin-top: 20px;
+	
 }
 
+.btn-enregistrer{
+background-color: #5F634F;
+color: #CFEBDF;
+width: 104px;
+height: 49px;
+float: left;
+margin-left: 20px;
+}
 
-.btn-creer{
+.btn-supprimer{
+background-color: #5F634F;
+color: #CFEBDF;
+width: 150px;
+height: 49px;
+float: left;
+margin-left: 20px
+}
+
+.btn-retour{
 background-color: #5F634F;
 color: #CFEBDF;
 width: 104px;
@@ -27,15 +49,6 @@ float: left;
 margin-left: 20px;
 margin-right: 20px;
 }
-
-
-
-.cards {
-display: grid;
-grid-template-columns: 1fr 1fr 1fr;
-grid-gap: 16px;
-}
-
 
 
 // Smallest device
@@ -79,4 +92,5 @@ grid-template-columns: 1fr 1fr 1fr;
 grid-template-columns: 1fr 1fr 1fr;
 }
 }
+
 
