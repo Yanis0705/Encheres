@@ -12,13 +12,9 @@
 <title>Inscription</title>
  
 </head>
-
   <body>
-
  <h3><a href="/WEB-INF/jsp/Utilisateur.jsp">Troc-enchères.org</a></h3>
  <h4>Créer un compte</h4>
- 
- 
 <div class="Inscription">
 	<div>
 	<form action="AjouterUtilisateurServlet.java" method="POST">
@@ -80,7 +76,7 @@
 		
 		 <tr>
 		  <td class="column1">Confirmation:</td>
-		  <td><input type="password" placeholder="Confirmation"name="mot_de_passe"></td>
+		  <td><input type="password" placeholder="Confirmation"name="mot_de_passe_confirmation"></td>
 		 </tr>
 		 
 		</table>
