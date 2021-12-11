@@ -18,7 +18,7 @@ public class UtilisateurManager {
 	private static UtilisateurDAO dao;
 
 	/**
-	 * Instantiates a new utilisateur M anager.
+	 * Instantiates a new utilisateur Manager.
 	 */
 	private UtilisateurManager() {
 		dao = DAOFactory.getUtilisateurDAO();
