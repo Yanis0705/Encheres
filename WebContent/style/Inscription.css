@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 body
 {
 margin:0 auto;
@@ -9,7 +11,11 @@ color: #5F634F;
 background-color:#CFEBDF;
 }
 
-
+.boutonsCreerAnnuler{
+display: flex;
+justify-content: center;
+margin-top: 20px;
+}
 
 
 .btn-creer{
@@ -17,7 +23,9 @@ background-color: #5F634F;
 color: #CFEBDF;
 width: 104px;
 height: 49px;
-display:inline-block;
+float: left;
+margin-left: 20px;
+margin-right: 20px;
 }
 
 
