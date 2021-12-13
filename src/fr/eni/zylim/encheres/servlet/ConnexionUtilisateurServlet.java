@@ -6,6 +6,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import fr.eni.zylim.encheres.bo.Utilisateur;
+import fr.eni.zylim.encheres.dal.jdbc.UtilisateurDAOJdbcImpl;
 
 /**
  * Servlet implementation class ConnexionUtilisateurServlet
@@ -32,8 +36,10 @@ public class ConnexionUtilisateurServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 	
 		getServletContext().getRequestDispatcher("/WEB-INF/jsp/Connexion.jsp").forward(request, response);
+
 
 	}
 
@@ -44,6 +50,7 @@ public class ConnexionUtilisateurServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 
 		doGet(request, response);
-	}
+		
 
+}
 }

@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ModifierUtilisateurServlet
+ * Servlet implementation class Afficherprofile
  */
-@WebServlet("/modifierutilisateur")
-public class ModifierUtilisateurServlet extends HttpServlet {
+@WebServlet("/Afficherprofile")
+public class Afficherprofile extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ModifierUtilisateurServlet() {
+    public Afficherprofile() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,8 +26,8 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO chemin si dessous provisoire
-				
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -35,7 +35,7 @@ public class ModifierUtilisateurServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		getServletContext().getRequestDispatcher("/WEB-INF/jsp/Utilisateur.jsp").forward(request, response);
+		doGet(request, response);
 	}
 
 }

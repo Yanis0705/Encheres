@@ -1,21 +1,41 @@
 package fr.eni.zylim.encheres.dal;
 
+import java.sql.SQLException;
 import java.util.List;
 
-import fr.eni.zylim.encheres.bo.Article;
+
 import fr.eni.zylim.encheres.bo.Utilisateur;
 
+
+
 public interface UtilisateurDAO {
+
+	List<Utilisateur> selectAllUtilisateurs() throws DALException;
+
+	Utilisateur selectUtilisateurByPseudo(String pseudo) throws DALException;
+
+	Utilisateur selectUtilisateurById(int id_Utilisateur) throws DALException;
+
+	boolean authenticate_Pseudo(String pseudo, String password);
+
+	Utilisateur ProfileBy_Pseudo(String pseudo, String password) throws DALException;
+
+	boolean authenticate_Mail(String eMail, String password);
+
+	void deleteUtilisateur(int id_Utilisateur) throws DALException;
+
+	Utilisateur insertUtilisateur(Utilisateur nouvelUtilisateur) throws DALException;
+
+	void updateUtilisateur(Utilisateur user) throws DALException;
+
+	List<String> getAllPseudos() throws DALException;
 	
 	
 
-	List<Utilisateur> selectAllUtilisateurs() throws DALException;
-	public List<Article> getAllArticles(Utilisateur utilisateur) throws DALException;
-	public Utilisateur selectUtilisateurById(int noUtilisateur) throws DALException;
-	public Utilisateur selectUtilisateuByPseudo (String pseudoUtilisateur) throws DALException;
-	void insertUtilisateur(Utilisateur nouvelUtilisateur) throws DALException;
-	void updateUtilisateur(Utilisateur data) throws DALException;
-	void deleteUtilisateur(int noUtilisateur) throws DALException;
+
+
+
+
 	
 	
 	

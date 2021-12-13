@@ -60,7 +60,7 @@ List<ArticleVendu> listeArticle = (List<ArticleVendu>)request.getAttribute("lesA
              <td><%= article.getPrix_vente() %></td>
             <td><%= article.getNo_utilisateur() %></td>
               <td><%= article.getNo_categorie() %></td>
-       
+     
             <td><%= article.getRetrait() %></td>
             
            
