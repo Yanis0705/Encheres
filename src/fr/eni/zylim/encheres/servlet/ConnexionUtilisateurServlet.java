@@ -38,7 +38,7 @@ public class ConnexionUtilisateurServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 	
-		getServletContext().getRequestDispatcher("/WEB-INF/jsp/Utilisateur.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/WEB-INF/jsp/Connexion.jsp").forward(request, response);
 
 
 	}
