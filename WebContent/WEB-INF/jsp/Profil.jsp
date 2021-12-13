@@ -17,8 +17,25 @@
   <h3><a href="/WEB-INF/jsp/Inscription.jsp">Troc-enchères.org</a></h3>
   
    <h4>Créer un compte</h4>
+    <br>
+
+
+   <%
+      if (session != null) {
+         if (session.getAttribute("user") != null) {
+            String name = (String) session.getAttribute("user");
+            out.print("Hello, " + name + "  Welcome to ur Profile");
+         } else {
+            response.sendRedirect("login.html");
+         }
+      }
+   %>
+   </br>
+   </br>
    
-  <form action="ModifierUtilisateurServlet.java" method="POST">
+   
+   
+  <form action="<%= request.getContextPath() %>/ModifierUtilisateurServlet.java" method="POST">
 <table align=center cellspacing=10>
 
  <tr>

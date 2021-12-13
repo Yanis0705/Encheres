@@ -5,7 +5,6 @@ import java.util.Collection;
 public class Utilisateur {
 
 	private int no_utilisateur;
-
 	private String pseudo;
 	private String nom;
 	private String prenom;
@@ -163,6 +162,23 @@ public class Utilisateur {
 		this.articles = articles;
 		this.encheres = encheres;
 	}
+	
+	public Utilisateur(int no_utilisateur, String pseudo, String nom, String prenom, String email, String telephone,
+			String rue, String code_postal, String ville, String mot_de_passe, int credit, boolean administrateur) {
+		super();
+		this.no_utilisateur = no_utilisateur;
+		this.pseudo = pseudo;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.telephone = telephone;
+		this.rue = rue;
+		this.code_postal = code_postal;
+		this.ville = ville;
+		this.mot_de_passe = mot_de_passe;
+		this.credit = credit;
+		this.administrateur = administrateur;
+	}
 
 	public Utilisateur(int no_utilisateur, String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String code_postal, String ville, String mot_de_passe,boolean administrateur) {
@@ -228,5 +244,7 @@ public class Utilisateur {
 		this.administrateur = administrateur;
 		this.no_utilisateur = no_utilisateur;
 	}
+
+
 	
 }

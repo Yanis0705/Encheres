@@ -2,14 +2,14 @@
 
 
 body{
- background-color:#6E6E6E;
+ background-color:#CFEBDF;
  font-family:roboto;
 }
 body p{
  text-align:center;
  margin-top:30px;
  font-size:40px;
- color:#E6E6E6;
+ color:#CFEBDF;
 }
 table{
  border-radius:3px;
@@ -48,7 +48,7 @@ table th{
  visibility:visible;
  display:block;
  font-size:20px;
- color:#E6E6E6;
+ color:#CFEBDF;
 }
 input[type="text"]{
  width:80%;

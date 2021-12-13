@@ -2,6 +2,8 @@ package fr.eni.zylim.encheres.bll;
 
 import java.util.ArrayList;
 import java.util.List;
+
+
 import fr.eni.zylim.encheres.bo.Utilisateur;
 import fr.eni.zylim.encheres.dal.DALException;
 import fr.eni.zylim.encheres.dal.DAOFactory;
@@ -55,12 +57,28 @@ public class UtilisateurManager {
 
 	}
 
-	public static Utilisateur getUtilisateur(int i) {
-		// TODO Auto-generated method stub
-		return null;
+	public static Utilisateur getUtilisateurProfile(String  pseudoname) {
+	Utilisateur user = new Utilisateur();
+
+		try {
+			user = dao.selectUtilisateurByPseudo(pseudoname);
+		} catch (DALException dale) {
+			dale.printStackTrace();
+		}
+
+		return user;
+
 	}
 
 
+	public Utilisateur ajouterUtilisateur(Utilisateur nouveauUtilisateur) throws DALException {
 
+		// TODO Vérification des régles métier
+		
+		// Appel de la DAL
+		Utilisateur utilisateur = dao.insertUtilisateur(nouveauUtilisateur);
+		
+		return utilisateur;
+	}
 
 }
