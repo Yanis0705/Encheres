@@ -430,6 +430,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			// e.printStackTrace();
 			throw new RuntimeException(e);
 		}
+		return conn;
 	}
 
 	/***********************************************************************/
