@@ -16,7 +16,7 @@ public class Utilisateur {
 	private String mot_de_passe;
 	private int credit;
 	boolean administrateur;
-	private Collection<Article> articles;
+	private Collection<ArticleVendu> articles;
 	private Collection<Enchere> encheres;
 
 	@Override
@@ -123,11 +123,11 @@ public class Utilisateur {
 		this.administrateur = administrateur;
 	}
 
-	public Collection<Article> getArticles() {
+	public Collection<ArticleVendu> getArticles() {
 		return articles;
 	}
 
-	public void setArticles(Collection<Article> articles) {
+	public void setArticles(Collection<ArticleVendu> articles) {
 		this.articles = articles;
 	}
 
@@ -145,7 +145,7 @@ public class Utilisateur {
 
 	public Utilisateur(int no_utilisateur, String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String code_postal, String ville, String mot_de_passe, int credit, boolean administrateur,
-			Collection<Article> articles, Collection<Enchere> encheres) {
+			Collection<ArticleVendu> articles, Collection<Enchere> encheres) {
 		super();
 		this.no_utilisateur = no_utilisateur;
 		this.pseudo = pseudo;
