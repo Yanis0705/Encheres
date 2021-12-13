@@ -17,6 +17,7 @@ import fr.eni.zylim.encheres.dal.UtilisateurDAO;
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 	private static final String SQL_SELECT_ALL_UTILISATEUR = "select * from UTILISATEURS";
+
 	private static final String SQL_SELECT_UTILISATEUR_PROFILE = "select * from UTILISATEURS where pseudo=?";
 	private static final String SQL_SELECT_UTILISATEUR_BY_ID = "SELECT * FROM UTILISATEURS    WHERE no_utilisateur = ?";
 	private static final String SQL_SELECT_UTILISATEUR_SESSION_PSEUDO = "select * from UTILISATEURS where pseudo=pseudo AND mot_de_passe=password";
@@ -24,14 +25,10 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private static final String SQL_INSERT_TO_UTILISATEUR = "INSERT INTO UTILISATEURS (pseudo,nom,prenom,email,telephone,rue,code_postal,ville, mot_de_passe,credit,administrateur) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 	private static final String SQL_UPDATE_UTILISATEUR = "UPDATE UTILISATEURS SET nom=?, prenom=?,email=?,telephone=?,rue=?, code_postal=?, ville=?,mot_de_passe=?, credit=?, administrateur=? WHERE no_utilisateur=?";
 	private static final String SQL_DELETE_UTILISATEUR = "DELETE UTILISATEURS WHERE no_utilisateur=?";
-	
+
 	private static final String SQL_GET_ARTICLES_VENDUS_BY_UTILISATEUR_ID = "select * from ARTICLES_VENDUS WHERE no_utilisateur=?";
 	private static final String SQL_GET_ALL_PSEUDOS = "SELECT pseudo FROM UTILISATEURS";
 
-//	private static EnchereDAO enchereDao = new EnchereDAOJDBCImpl();
-//	private static ArticleDAO articleDao = new ArticleDAOJDBCImpl();
-//	private static CategorieDAO categorieDao = new CategorieDAOJDBCImpl();
-//	private static RetraitDAO retraitDao = new RetraitDAOJDBCImpl();
 	/********************************** constructeur vide ***********************/
 	public UtilisateurDAOJdbcImpl() {
 
@@ -80,7 +77,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 				listeUtilisateurs.add(a); // !! ne pas oublier d'ajouter l'article dans la liste
 
 				// System.out.println(a);
-				 System.out.println(listeUtilisateurs);
+				System.out.println(listeUtilisateurs);
 				// System.out.println("test select :"+selectUtilisateurByPseudo("toto"));
 
 				// System.out.println("test select by id:"+selectUtilisateurById(1));
@@ -95,7 +92,9 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 	}
 
-	/******************** select by pseudo to show data profil user************************/
+	/********************
+	 * select by pseudo to show data profil user
+	 ************************/
 	@Override
 	public Utilisateur selectUtilisateurByPseudo(String pseudo) throws DALException {
 		Utilisateur utilisateur = null;
@@ -134,6 +133,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			ResultSet rs = pStmt.executeQuery();
 			if (rs.next()) {
 				utilisateur = map(rs);
+
 			}
 
 		} catch (SQLException e) {
@@ -145,7 +145,9 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 	}
 
-	/***************************** Authentification BY PSEUDO******************************/
+	/*****************************
+	 * Authentification BY PSEUDO
+	 ******************************/
 	@Override
 	public boolean authenticate_Pseudo(String pseudo, String password) {
 
@@ -174,9 +176,10 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		return result;
 
 	}
-	
-	/***************************** find profile BY PSEUDO
-	 * @throws DALException ******************************/
+
+	/*****************************
+	 * find profile BY PSEUDO
+	 ******************************/
 	@Override
 	public Utilisateur ProfileBy_Pseudo(String pseudo, String password) throws DALException {
 
@@ -200,13 +203,10 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		return utilisateur;
 
 	}
-		
-		
 
-	
-
-
-	/***************************** Authentification BY MAIL **************************************/
+	/*****************************
+	 * Authentification BY MAIL
+	 **************************************/
 	@Override
 	public boolean authenticate_Mail(String eMail, String password) {
 
@@ -243,10 +243,10 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			PreparedStatement pStmt = cnx.prepareStatement(SQL_DELETE_UTILISATEUR);
 			pStmt.setInt(1, id_Utilisateur);
 
-			// n = nombre de lignes supprimées (ici, soit 1 soit 0).
+			// n = nombre de lignes supprimï¿½es (ici, soit 1 soit 0).
 			int n = pStmt.executeUpdate();
 
-			// return n == 1;//si 1 ligne supprimée --> true, sinon false
+			// return n == 1;//si 1 ligne supprimï¿½e --> true, sinon false
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DALException(e.getMessage());
@@ -257,6 +257,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	/******************************************************/
 
 	@Override
+
 	public Utilisateur insertUtilisateur(Utilisateur nouvelUtilisateur) throws DALException {
 		try (Connection cnx = ConnectionProvider.getConnection()) {
 			PreparedStatement statement = cnx.prepareStatement(SQL_INSERT_TO_UTILISATEUR,
@@ -275,21 +276,18 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			statement.setString(8, nouvelUtilisateur.getVille());
 			statement.setString(9, nouvelUtilisateur.getMot_de_passe());
 			statement.setInt(10, nouvelUtilisateur.getCredit());
-			if ( nouvelUtilisateur.getCredit()!=0) {
-				statement.setBoolean(11,nouvelUtilisateur.isAdministrateur());
-		} else {
+			if (nouvelUtilisateur.getCredit() != 0) {
+				statement.setBoolean(11, nouvelUtilisateur.isAdministrateur());
+			} else {
 				statement.setBoolean(11, false);
 			}
-	
 
-			int i=statement.executeUpdate();
-			if(i > 0) {
-                System.out.println("You are sucessfully registered");
-            	System.out.println("User with following details was saved in DB: " + nouvelUtilisateur.toString());
+			int i = statement.executeUpdate();
+			if (i > 0) {
+				System.out.println("You are sucessfully registered");
+				System.out.println("User with following details was saved in DB: " + nouvelUtilisateur.toString());
 			}
 			statement.close();
-
-		
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -364,7 +362,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 			// if user does not exist set the isValid variable to false
 			if (!more) {
-				System.out.println("désoler vous n'étes pas enregister");
+				System.out.println("dï¿½soler vous n'ï¿½tes pas enregister");
 
 			}
 
@@ -416,44 +414,6 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 	}
 
-	public Utilisateur utilisateurBuilder(ResultSet rs) throws DALException {
-		/*
-		 * List<ArticleVendu> articlesVendus =
-		 * this.getArticlesVendusUtilisateur(rs.getInt("no_utilisateur"));
-		 * List<ArticleVendu> articlesAchetes =
-		 * this.getArticlesAchetesUtilisateur(rs.getInt("no_utilisateur"));
-		 * List<Enchere> encheres =
-		 * this.getEncheresUtilisateur(rs.getInt("no_utilisateur"));
-		 */
-
-		Utilisateur utilisateur = new Utilisateur();
-
-		try {
-			utilisateur.setNo_utilisateur(rs.getInt("no_utilisateur"));
-
-			utilisateur.setPseudo(rs.getString("pseudo"));
-			utilisateur.setNom(rs.getString("nom"));
-			utilisateur.setPrenom(rs.getString("prenom"));
-			utilisateur.setEmail(rs.getString("email"));
-			utilisateur.setTelephone(rs.getString("telephone"));
-			utilisateur.setRue(rs.getString("rue"));
-			utilisateur.setCode_postal(rs.getString("code_postal"));
-			utilisateur.setVille(rs.getString("ville"));
-			utilisateur.setMot_de_passe(rs.getString("mot_de_passe"));
-			utilisateur.setCredit(rs.getInt("credit"));
-			utilisateur.setAdministrateur(rs.getBoolean("administrateur"));
-//	utilisateur.setArticlesVendus(articlesVendus);
-//	utilisateur.setArticlesAchetes(articlesAchetes);
-//	utilisateur.setEncheres(encheres);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return utilisateur;
-
-	}
-
 	/*****************************************************/
 	public Connection getConnection() {
 		Connection conn = ConnectionProvider.getConnection();
@@ -470,9 +430,28 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			// e.printStackTrace();
 			throw new RuntimeException(e);
 		}
+	}
 
-		return conn;
+	/***********************************************************************/
 
+	@Override
+	public List<String> getAllPseudos() throws DALException {
+
+		List<String> pseudos = new ArrayList<>();
+
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+			PreparedStatement statement = cnx.prepareStatement(SQL_GET_ALL_PSEUDOS);
+
+			ResultSet rs = statement.executeQuery();
+
+			while (rs.next()) {
+				pseudos.add(rs.getString("pseudo"));
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return pseudos;
 	}
 
 	/************************* fin ****************************/

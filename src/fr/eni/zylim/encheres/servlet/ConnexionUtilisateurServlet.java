@@ -36,12 +36,11 @@ public class ConnexionUtilisateurServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//	if(request.getSession().getAttribute("CURRENT_USER")==null) {
-//		request.setAttribute("err", "votre nom utilisateur ou mots de passe est incorrect");
-//		getServletContext().getRequestDispatcher("/WEB-INF/jsp/Connexion.jsp").forward(request, response);
-//	}
-		getServletContext().getRequestDispatcher("/WEB-INF/jsp/Connexion.jsp").forward(request, response);
-		
+
+	
+		getServletContext().getRequestDispatcher("/WEB-INF/jsp/Utilisateur.jsp").forward(request, response);
+
+
 	}
 
 	/**

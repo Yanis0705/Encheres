@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,10 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<br>
+	<br>
 
 
-   <%
+	<%
       if (session != null) {
          if (session.getAttribute("user") != null) {
             String name = (String) session.getAttribute("user");
@@ -20,10 +20,11 @@
          }
       }
    %>
-   </br>
-   </br>
-   <form action="Logout" method="post">
-      <input type="submit" value="Logout">
-   </form>
+	</br>
+	</br>
+	<form action="Logout" method="post">
+		<input type="submit" value="Logout">
+	</form>
 </body>
-</html>l>
+</html>
+l>
