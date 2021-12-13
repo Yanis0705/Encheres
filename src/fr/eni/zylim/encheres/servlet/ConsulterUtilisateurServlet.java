@@ -44,8 +44,8 @@ public class ConsulterUtilisateurServlet extends HttpServlet {
 
 					Utilisateur utilisateur;
 					UtilisateurManager.getInstance();
-					utilisateur = UtilisateurManager.getUtilisateur(3);
-					System.out.println(utilisateur);
+					//utilisateur = UtilisateurManager.getUtilisateur(3);
+					//System.out.println(utilisateur);
 					
 
 				
