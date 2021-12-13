@@ -1,3 +1,6 @@
+<%@page import="fr.eni.zylim.encheres.bo.ArticleVendu"%>
+<%@page import="fr.eni.zylim.encheres.bll.ArticleVenduManager"%>
+<%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -11,6 +14,66 @@
 <title>Accueil</title>
 </head>
 <body>
+
+
+
+<%--  <%
+   
+    
+      for (Article article : listeArticle) {
+    %>
+        <tr>
+        	<td><%= article.getNo_article() %></td>
+        	  	<td><%= article.getNom_article() %></td>
+          
+           
+        </tr>
+    <% } %> --%>
+    
+    <p>
+    <table>
+    <thead>
+        <tr>
+            <th colspan="12">Liste des articles</th>
+        </tr>
+    </thead>
+
+<%
+List<ArticleVendu> listeArticle = (List<ArticleVendu>)request.getAttribute("lesArticles");
+
+%>    
+    
+    <tbody>
+      
+        
+    <%
+   
+      for (ArticleVendu article : listeArticle) {
+    %>
+        <tr>
+        	<td><%= article.getNo_article()  %></td>
+            <td><%= article.getNom_article() %></td>
+            <td><%= article.getDescription() %></td>
+            <td><%= article.getDate_debut_encheres() %></td>
+            <td><%= article.getDate_fin_encheres() %></td>
+            <td><%= article.getPrix_initial() %></td>
+             <td><%= article.getPrix_vente() %></td>
+            <td><%= article.getNo_utilisateur() %></td>
+              <td><%= article.getNo_categorie() %></td>
+       
+            <td><%= article.getRetrait() %></td>
+            
+           
+        </tr>
+    <% } %>
+
+
+
+</tbody>
+</table>
+     
+</p>
+
 
 <div id="wrapper">
 
@@ -46,6 +109,8 @@
    </p>
    <input type="submit" value="Rechercher">
 </form>
+
+  
 
 
 <div class = "tous_les_articles">

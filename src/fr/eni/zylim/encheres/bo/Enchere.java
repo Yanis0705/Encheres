@@ -4,20 +4,11 @@ import java.sql.Date;
 
 public class Enchere {
 
-	private int no_enchere;
 	private Date date_enchere;
 	private int montant_enchere;
 	private int no_article;
 	private int no_utilisateur;
-
-	public int getNo_enchere() {
-		return no_enchere;
-	}
-
-	public void setNo_enchere(int no_enchere) {
-		this.no_enchere = no_enchere;
-	}
-
+	
 	public Date getDate_enchere() {
 		return date_enchere;
 	}
@@ -50,23 +41,29 @@ public class Enchere {
 		this.no_utilisateur = no_utilisateur;
 	}
 
-	public Enchere(int no_enchere, Date date_enchere, int montant_enchere, int no_article, int no_utilisateur) {
-		super();
-		this.no_enchere = no_enchere;
-		this.date_enchere = date_enchere;
-		this.montant_enchere = montant_enchere;
+	public Enchere() {
+		
+	}
+	
+	public Enchere( Date date_enchere, int montant_enchere, int no_article, int no_utilisateur) {
+		this(date_enchere , montant_enchere);
+		
 		this.no_article = no_article;
 		this.no_utilisateur = no_utilisateur;
 	}
-
-	public Enchere() {
-		super();
-		// TODO Auto-generated constructor stub
+	public Enchere( Date date_enchere, int montant_enchere) {
+		this.date_enchere = date_enchere;
+		this.montant_enchere = montant_enchere;
+		
 	}
+	
+
+
+
 
 	@Override
 	public String toString() {
-		return "Enchere [no_enchere=" + no_enchere + ", date_enchere=" + date_enchere + ", montant_enchere="
+		return "Enchere [ date_enchere=" + date_enchere + ", montant_enchere="
 				+ montant_enchere + ", no_article=" + no_article + ", no_utilisateur=" + no_utilisateur + "]";
 	}
 
