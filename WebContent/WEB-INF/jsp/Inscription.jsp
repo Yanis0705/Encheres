@@ -18,13 +18,7 @@
 
 </head>
 <body>
-	<h3>
-		<a href="/WEB-INF/jsp/Utilisateur.jsp">Troc-enchères.org</a>
-	</h3>
-	<h4>Créer un compte</h4>
-	<div class="Inscription">
-		<div>
-
+	
 
 
 			<h3>
@@ -32,6 +26,8 @@
 			</h3>
 
 			<h4>Créer un compte</h4>
+		
+		
 			<form action="<c:url value="/EnregisterUtilisateur" />" method="post">
 
 				<table align=center cellspacing=10>
@@ -113,20 +109,19 @@
 				</table>
 
 				<div class="boutonsInscription">
-					<div>
+				
 						<a href="/WEB-INF/jsp/Utilisateur.jsp">
 							<button type="submit">Créer</button>
 						</a>
 					</div>
-
-
-
-					<form action="connexionutilisateur">
-
-
-						<button class="btn-creer" href="/WEB-INF/jsp/Connexion.jsp">Annuler</button>
-					</form>
-				</div>
-		</div>
+</form> 
 </body>
+					<form  class="form-1" action="connexionutilisateur">
+
+
+						<button  id="btn_i" class="btn-creer" href="/WEB-INF/jsp/Connexion.jsp">Annuler</button>
+					</form>
+				
+	
+
 </html>

@@ -86,9 +86,10 @@ public class Login extends HttpServlet {
 	         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/jsp/AccountUtil.jsp");
 				dispatcher.forward(request, response);
 		} else {
+			//getServletContext().getRequestDispatcher("/WEB-INF/jsp/Accueil.jsp").forward(request, response);
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/Connexion.jsp");
-			out.println("<font color=red>Either user name or password is wrong.</font>");
-			rd.include(request, response);
+			out.println("<font color=red>Identifiant ou mot de passe incorrect.  .</font>");
+		rd.include(request, response);
 		} // TODO Auto-generated method stub
 
 	}

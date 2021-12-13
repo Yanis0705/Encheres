@@ -16,13 +16,13 @@
             String name = (String) session.getAttribute("user");
             out.print("Hello, " + name + "  Welcome to ur Profile");
          } else {
-            response.sendRedirect("login.html");
+            response.sendRedirect("/WEB-INF/jsp/AccountUtil.jsp");
          }
       }
    %>
 	</br>
 	</br>
-	<form action="Logout" method="post">
+	<form action="/encheres/Logout" method="post">
 		<input type="submit" value="Logout">
 	</form>
 </body>
