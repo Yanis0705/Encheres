@@ -6,13 +6,15 @@
 
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <style>
+  
 <%@ include file="/style/responsive_style_marion.css"%></style>
 
 <title>Vendu</title>
+
 </head>
 <body>
 	<div id="wrapper">
-
+<a href="<%="/encheres/consulteraccueilconnexion"%>"><img class="ico3"  src="<%=getServletContext().getContextPath()%>/images/icone.png"></a>
 		<div class="form_div">
 			<p class="form_label">
 				<a href="#">Troc-enchères</a>

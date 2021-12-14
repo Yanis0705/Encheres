@@ -8,7 +8,15 @@ width:100%;
 background-color:#CFEBDF;
 }
 
-
+.ico{
+    width:15%;
+    display:block;
+    height:15%;
+    background-color:#CFEBDF;
+    color:white;
+    text-decoration:none;
+    padding-left:20px;
+}
 
 /* .container {
 width: 250px;

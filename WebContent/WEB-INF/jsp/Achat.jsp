@@ -16,9 +16,11 @@
 
 		<div class="form_div">
 			<p class="form_label">
+			<a href="<%="/encheres/consulteraccueilconnexion"%>"><img class="ico"  src="<%=getServletContext().getContextPath()%>/images/icone.png"></a>
 				<a href="#">Troc-enchères</a>
 			</p>
 			<form method="post" action="">
+			
 				<div class="title">
 					<p>Vous avez remporté l'enchère !</p>
 				</div>

@@ -14,6 +14,7 @@
 	href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap"
 	rel="stylesheet">
 <title>Profil</title>
+<a href="<%="/encheres/consulteraccueilconnexion"%>"><img class="ico"   src="<%=getServletContext().getContextPath()%>/images/icone.png"></a>
 </head>
 <%
 	Utilisateur utilisateur;
@@ -25,9 +26,13 @@
 		<a href="/WEB-INF/jsp/Inscription.jsp">Troc-enchères.org</a>
 	</h3>
 
-	<h4>Créer un compte</h4>
+	<h4>votre profile</h4>
 	<br>
+<%
 
+Utilisateur user = (Utilisateur)request.getAttribute("userprofile");
+
+%>
 
 	<%
 		if (session != null) {
@@ -46,10 +51,15 @@
 
 	<form action="<%=request.getContextPath()%>/ModifierUtilisateurServlet.java" method="POST">
 
-		<h3>
-			<a href="/WEB-INF/jsp/Utilisateur.jsp">Troc-enchères.org</a>
-		</h3>
-		<h4>recuperer le nom de la base de données</h4>
+		
+		<tr ><%= user.getNo_utilisateur()%></tr>
+					<tr><%= user.getPseudo() %></tr>
+					<tr><%= user.getNom() %></tr>
+					<tr><%= user.getPrenom() %></tr>
+					<tr><%= user.getEmail() %></tr>
+
+					<tr><%= user.getTelephone() %></tr>
+					<tr><%= user.getCredit() %></tr>
 
 		<div class="Profil">
 

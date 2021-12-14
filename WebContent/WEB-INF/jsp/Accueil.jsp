@@ -1,6 +1,8 @@
 <%@page import="fr.eni.zylim.encheres.bo.ArticleVendu"%>
 <%@page import="fr.eni.zylim.encheres.bll.ArticleVenduManager"%>
 <%@ page import="java.util.List" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -14,67 +16,7 @@
 <title>Accueil</title>
 </head>
 <body>
-
-
-
-<%--  <%
-   
-    
-      for (Article article : listeArticle) {
-    %>
-        <tr>
-        	<td><%= article.getNo_article() %></td>
-        	  	<td><%= article.getNom_article() %></td>
-          
-           
-        </tr>
-    <% } %> --%>
-    
-    <p>
-    <table>
-    <thead>
-        <tr>
-            <th colspan="12">Liste des articles</th>
-        </tr>
-    </thead>
-
-<%
-List<ArticleVendu> listeArticle = (List<ArticleVendu>)request.getAttribute("lesArticles");
-
-%>    
-    
-    <tbody>
-      
-        
-    <%
-   
-      for (ArticleVendu article : listeArticle) {
-    %>
-        <tr>
-        	<td><%= article.getNo_article()  %></td>
-            <td><%= article.getNom_article() %></td>
-            <td><%= article.getDescription() %></td>
-            <td><%= article.getDate_debut_encheres() %></td>
-            <td><%= article.getDate_fin_encheres() %></td>
-            <td><%= article.getPrix_initial() %></td>
-             <td><%= article.getPrix_vente() %></td>
-            <td><%= article.getNo_utilisateur() %></td>
-              <td><%= article.getNo_categorie() %></td>
-     
-            <td><%= article.getRetrait() %></td>
-            
-           
-        </tr>
-    <% } %>
-
-
-
-</tbody>
-</table>
-     
-</p>
-
-
+    <a href="<%="/encheres/consulteraccueilconnexion"%>"><img class="ico2"   src="<%=getServletContext().getContextPath()%>/images/icone.png"></a>
 <div id="wrapper">
 
 <div class="form_div">
@@ -87,16 +29,10 @@ List<ArticleVendu> listeArticle = (List<ArticleVendu>)request.getAttribute("lesA
 <div class="barre_de_recherche">
     <input type="text" id="input_search" value="Le nom de l'article contient">
     <img src=/encheres/images/icon_search.jfif id="input_img">
-    </div>
+    </div>  
     
-    
-    
-    
-    
-</div>
-<!-- <p class="les_categories">Catégories</p> -->
 
-   <p>
+<p>
        <label for="categories">Catégories</label><br />
        <select name="categories" id="categories">
            <option value="informatique">Informatique</option>
@@ -118,9 +54,16 @@ List<ArticleVendu> listeArticle = (List<ArticleVendu>)request.getAttribute("lesA
 <div class= un_article>
 
 <img src="url" />
-<a href ="/encheres/detailachatservlet"><p class = "nom_article">afficher le nom de l'article</p></a>
-<p class = "prix_initial">afficher le prix_initial de l'article</p>
-<p class = "date_fin_encheres">afficher la date de fin de l'encheres article</p>
+ <c:forEach items="${lesArticles}" var="article">
+     
+        	
+        <h3><a href ="/encheres/detailachatservlet">${article.nom_article}</a></h3>
+            <p>${article.description}</p>
+             <p>${article.prix_initial}</p>
+             <p>${article.date_fin_encheres}</p>
+           
+    </c:forEach>
+    
 <p class = "retrait">afficher l'adresse de retrait</p>
 <p class = "pseudo_vendeur">afficher le pseudo de vendeur</p>
 
@@ -128,25 +71,6 @@ List<ArticleVendu> listeArticle = (List<ArticleVendu>)request.getAttribute("lesA
 </div>
 
 </div>
-
-
-
-<!-- <p><input type="text" placeholder="Enter Email"></p>
-<p><input type="password" placeholder="**********"></p>
-
- <div><input type="checkbox" checked="checked">
-  <span class="checkmark">se souvenir de moi</span>
-  </div>
-
-  <div class="container column">
-<div class="item"><p><input type="submit" value="connexion"></p></div>
-
 </div>
-</form>
-
-    <DIV class="item" "><form name="main0" action="ajouterutilisateur" method="get">
-        <input type="submit" value="cree un compte">
-    </form></DIV>
- -->
 </body>
 </html>
