@@ -38,6 +38,7 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 				
 				ArticleVendu article = null;
 				Utilisateur user = null;
+
 				
 				while (resultat.next()) {
 					
@@ -55,9 +56,10 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 //					Retrait retrait =  (Retrait) resultat.getObject("retrait");
 					article = new ArticleVendu(no_article,nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente,  no_utilisateur, no_categorie, etat_vente);
 					lesArticlesVendus.add(article);
-					
+
 			user = new Utilisateur(no_utilisateur,pseudo);
 			System.out.println("affichage article + utilisateur " + article + user.getPseudo());
+
 				}
 				
 				}
@@ -69,8 +71,6 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 			return lesArticlesVendus;
 		}
 	
-
-
 
 	@Override
 	public void updateArticleVendu(ArticleVendu data) throws DALException {
