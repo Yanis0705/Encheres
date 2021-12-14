@@ -29,14 +29,7 @@ import fr.eni.zylim.encheres.dal.DALException;
 @WebServlet("/vendrearticle")
 public class VendreArticleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-   
-    public VendreArticleServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		getServletContext().getRequestDispatcher("/WEB-INF/jsp/NouvelleVente.jsp").forward(request, response);
@@ -50,16 +43,16 @@ public class VendreArticleServlet extends HttpServlet {
 		String nom = request.getParameter("article");
 		String description = request.getParameter("description");
 		
-		LocalDate utilDateDebutEncheres  = LocalDate.parse(request.getParameter("dEnchere"));
 		ZoneId systemTimeZone = ZoneId.systemDefault();
+		LocalDate utilDateDebutEncheres  = LocalDate.parse(request.getParameter("dateDebutEnchere"));
 		ZonedDateTime zonedDateTime = utilDateDebutEncheres.atStartOfDay(systemTimeZone);
 		Date dateDebutEncheres = Date.from(zonedDateTime.toInstant());
 		
-		LocalDate utilDateFinEncheres  = LocalDate.parse(request.getParameter("fEnchere"));
+		LocalDate utilDateFinEncheres  = LocalDate.parse(request.getParameter("dateFinEnchere"));
 		ZonedDateTime zonedDateTime2 = utilDateFinEncheres.atStartOfDay(systemTimeZone);
 		Date dateFinEncheres = Date.from(zonedDateTime2.toInstant());
 		
-		int miseAPrix = Integer.parseInt(request.getParameter("mPrix"));
+		int miseAPrix = Integer.parseInt(request.getParameter("prixBase"));
 		int categorieId = Integer.parseInt(request.getParameter("categorie"));
 		String rue = request.getParameter("rue");
 		String codePostal = request.getParameter("codePostal");
@@ -104,7 +97,7 @@ public class VendreArticleServlet extends HttpServlet {
 		}
 
 		request.setAttribute("ArticleAffiche", article);
-		this.getServletContext().getRequestDispatcher("/XXXXX").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/detailventeservlet").forward(request, response);
 		
 	}
 }

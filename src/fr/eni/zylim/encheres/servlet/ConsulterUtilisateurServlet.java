@@ -34,16 +34,6 @@ public class ConsulterUtilisateurServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-
-
-					Utilisateur utilisateur;
-					UtilisateurManager.getInstance();
-					utilisateur = UtilisateurManager.getUtilisateurById(3);
-					System.out.println(utilisateur);
-
-
-				
 				getServletContext().getRequestDispatcher("/WEB-INF/jsp/Profil.jsp").forward(request, response);
 	}
 

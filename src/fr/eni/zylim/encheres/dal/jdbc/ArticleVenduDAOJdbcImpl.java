@@ -19,7 +19,12 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 	private static final String SELECT_FILTER_NOM = "SELECT * FROM ARTICLES_VENDUS WHERE nom_article LIKE ?";
 	private static final String SELECT_FILTER_CATEGORIE = "SELECT * FROM ARTICLES_VENDUS WHERE no_categorie LIKE ?";
 	private static final String SELECT_ALL ="SELECT * FROM ARTICLES_VENDUS a INNER JOIN UTILISATEURS u ON u.no_utilisateur = a.no_utilisateur " ;
-
+	private static final String SQL_INSERT_TO_ARTICLE = "INSERT INTO ARTICLES_VENDUS VALUES (nom_article, description, date_debut_encheres," +
+	"date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie, etat_vente )";
+	private final static String SQL_UPDATE_ARTICLE = "UPDATE ARTICLES_VENDUS SET nom_article=?, description=?, date_debut_encheres=?, date_fin_encheres=?, prix_initial=?, no_utilisateur=?, no_categorie=?," +
+	", no_categorie=? WHERE no_Article=?";
+	private final static String SQL_DELETE_ARTICLE = "DELETE FROM ARTICLES_VENDUS WHERE no_Article=?";
+	
 	@Override
 	public ArticleVendu selectArticleById(int no_article) throws DALException {
 		// TODO Auto-generated method stub
@@ -73,20 +78,74 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 	
 
 	@Override
-	public void updateArticleVendu(ArticleVendu data) throws DALException {
-		// TODO Auto-generated method stub
+	public void updateArticleVendu(ArticleVendu articleUpdate) throws DALException {
+		try(Connection cnx = ConnectionProvider.getConnection()) {
+			PreparedStatement pStmt = cnx.prepareStatement(SQL_UPDATE_ARTICLE);
+			pStmt.setString(1, articleUpdate.getNom_article());
+			pStmt.setString(2, articleUpdate.getDescription());
+			pStmt.setDate(3, articleUpdate.getDate_debut_encheres());
+			pStmt.setDate(4, articleUpdate.getDate_fin_encheres());
+			pStmt.setInt(5, articleUpdate.getPrix_initial());
+			pStmt.setInt(6, articleUpdate.getPrix_vente());
+			pStmt.setInt(7, articleUpdate.getNo_utilisateur());
+			pStmt.setInt(8, articleUpdate.getNo_categorie());
+			pStmt.setBoolean(9, articleUpdate.isEtat_vente());
+			pStmt.setInt(10, articleUpdate.getNo_article());
+
+			pStmt.executeUpdate();
+
+			} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DALException(e.getMessage());
+			}
 
 	}
 
 	@Override
 	public void deleteArticleVendu(int no_Article) throws DALException {
-		// TODO Auto-generated method stub
+		try(Connection cnx = ConnectionProvider.getConnection()) {
+			PreparedStatement pStmt = cnx.prepareStatement(SQL_DELETE_ARTICLE);
+			pStmt.setInt(1, no_Article);
+
+			//n = nombre de lignes supprimées (ici, soit 1 soit 0).
+			int n = pStmt.executeUpdate();
+
+			//return n == 1;//si 1 ligne supprimée --> true, sinon false
+			} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DALException(e.getMessage());
+			}
 
 	}
 
 	@Override
-	public void insertArticleVendu(ArticleVendu nouveauArticle) throws DALException {
-		// TODO Auto-generated method stub
+	public void insertArticleVendu(ArticleVendu nouvelArticle) throws DALException {
+		try(Connection cnx = ConnectionProvider.getConnection()) {
+
+			PreparedStatement pStmt = cnx.prepareStatement(SQL_INSERT_TO_ARTICLE, Statement.RETURN_GENERATED_KEYS);
+			pStmt.setString(1, nouvelArticle.getNom_article());
+			pStmt.setString(2, nouvelArticle.getDescription());
+			pStmt.setDate(3, nouvelArticle.getDate_debut_encheres());
+			pStmt.setDate(4, nouvelArticle.getDate_fin_encheres());
+			pStmt.setInt(5, nouvelArticle.getPrix_initial());
+			pStmt.setInt(6, nouvelArticle.getPrix_vente());
+			pStmt.setInt(7, nouvelArticle.getNo_utilisateur());
+			pStmt.setInt(8, nouvelArticle.getNo_categorie());
+			pStmt.setBoolean(9, nouvelArticle.isEtat_vente());
+
+			pStmt.executeUpdate();
+
+			ResultSet rs = pStmt.getGeneratedKeys();
+//			if(rs.next()) {
+//			int no_article_Insere = rs.getInt(1);
+//			nouvelArticle.setNo_article(no_article_Insere);
+//			}
+
+			} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DALException(e.getMessage());
+			}
+
 		
 	}
 
