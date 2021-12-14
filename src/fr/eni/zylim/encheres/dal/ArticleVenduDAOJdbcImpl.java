@@ -65,13 +65,8 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 		}
 	
 
-	@Override
-	public List<ArticleVendu> selectByString(String filter) throws DALException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	
+
 	@Override
 	public void updateArticleVendu(ArticleVendu data) throws DALException {
 		// TODO Auto-generated method stub
