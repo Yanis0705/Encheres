@@ -7,7 +7,7 @@
    name="jdbc/encheresPool"
    driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
    type="javax.sql.DataSource"
-   url="jdbc:sqlserver://127.0.0.1:1433;databasename=ENCHERES"
+   url="jdbc:sqlserver://102SE42-7YH3P02:1433;databasename=ENCHERS"
    username="sa"
   password="Pa$$w0rd"
    maxTotal="100"  
