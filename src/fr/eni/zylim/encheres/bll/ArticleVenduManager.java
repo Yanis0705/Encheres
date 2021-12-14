@@ -16,10 +16,10 @@ public class ArticleVenduManager {
 	
 private static ArticleVenduManager instance;
 	
-	private static ArticleVenduDAO dao;
+	private static ArticleVenduDAO articleVendudao;
 	
 	private ArticleVenduManager() {
-		dao = DAOFactory.getArticleVenduDAO();
+		articleVendudao = DAOFactory.getArticleVenduDAO();
 	};
 
 	public static ArticleVenduManager getInstance() {
@@ -32,12 +32,17 @@ private static ArticleVenduManager instance;
 	public static List<ArticleVendu> selectAllArticle(){
 		List<ArticleVendu> lesArticles = new ArrayList<ArticleVendu>();
 		try {
-		lesArticles = dao.selectAllArticle();
+		lesArticles = articleVendudao.selectAllArticle();
 		} catch (DALException e) {
 			e.printStackTrace();
 			
 		}
 		return lesArticles;
+	}
+
+	public static ArticleVendu nouvelleVente(ArticleVendu article) throws DALException {
+		articleVendudao.insertArticleVendu(article);
+		return article;	
 	}
 	
 
