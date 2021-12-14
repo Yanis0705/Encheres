@@ -1,4 +1,4 @@
-package fr.eni.zylim.encheres.dal;
+package fr.eni.zylim.encheres.dal.jdbc;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -13,7 +13,6 @@ import fr.eni.zylim.encheres.bo.ArticleVendu;
 import fr.eni.zylim.encheres.bo.Retrait;
 import fr.eni.zylim.encheres.dal.ArticleVenduDAO;
 import fr.eni.zylim.encheres.dal.DALException;
-import fr.eni.zylim.encheres.dal.jdbc.ConnectionProvider;
 
 public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 	private static final String SELECT_FILTER_NOM = "SELECT * FROM ARTICLES_VENDUS WHERE nom_article LIKE ?";

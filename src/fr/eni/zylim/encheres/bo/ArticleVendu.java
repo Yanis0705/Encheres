@@ -8,13 +8,15 @@ public class ArticleVendu {
 	private String description;
 	private Date date_debut_encheres;
 	private Date date_fin_encheres;
-
 	private int prix_initial ;
 	private int prix_vente ;
 	private int no_utilisateur ;
 	private int no_categorie ;
 	private boolean etat_vente ;
+	
     private Retrait retrait;
+	private Categorie categorie;
+	private Utilisateur vendeur;
 
 	public int getNo_article() {
 		return no_article;
@@ -40,16 +42,16 @@ public class ArticleVendu {
 		return date_debut_encheres;
 	}
 
-	public void setDate_debut_encheres(Date date_debut_encheres) {
-		this.date_debut_encheres = date_debut_encheres;
+	public void setDate_debut_encheres(Date dateDebutEncheres) {
+		this.date_debut_encheres = dateDebutEncheres;
 	}
 
 	public Date getDate_fin_encheres() {
 		return date_fin_encheres;
 	}
 
-	public void setDate_fin_encheres(Date date_fin_encheres) {
-		this.date_fin_encheres = date_fin_encheres;
+	public void setDate_fin_encheres(Date dateFinEncheres) {
+		this.date_fin_encheres = dateFinEncheres;
 	}
 
 	public int getPrix_initial() {
@@ -103,13 +105,29 @@ public class ArticleVendu {
 	public void setNo_article(int no_article) {
 		this.no_article = no_article;
 	}
+	
+	public Utilisateur getVendeur() {
+		return vendeur;
+	}
 
+	public void setVendeur(Utilisateur vendeur) {
+		this.vendeur = vendeur;
+	}
+
+	public Categorie getCategorie() {
+		return categorie;
+	}
+	
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
+	
 	public ArticleVendu() {
 		super();
 	}
 
 	
-	
+
 	public ArticleVendu( int no_article, String nom_article, String description, Date date_debut_encheres,
 			Date date_fin_encheres, int prix_initial,int prix_vente,  int no_utilisateur, int no_categorie,
 			boolean etat_vente, Retrait retrait) {
@@ -140,6 +158,5 @@ public class ArticleVendu {
 				+ ", prix_initial=" + prix_initial + ", prix_vente=" + prix_vente + ", no_utilisateur=" + no_utilisateur
 				+ ", no_categorie=" + no_categorie + "]";
 	}
-
 	
 }
