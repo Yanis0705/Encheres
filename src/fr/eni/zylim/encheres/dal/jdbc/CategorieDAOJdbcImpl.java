@@ -55,6 +55,4 @@ public class CategorieDAOJdbcImpl implements CategorieDAO{
 	}
 }
 
-public class CategorieDAOJdbcImpl {
-}
 
