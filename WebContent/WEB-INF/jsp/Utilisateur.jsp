@@ -16,7 +16,7 @@ String un=request.getParameter("uname");
 <meta http-equiv="Content-Type"
 	content="text/html; charset=windows-1256">
 <title>LIste utilisateurs</title>
-<a href="<%="/encheres/consulteraccueilconnexion"%>"><img class="ico2"  alt="Coup CHI" src="<%=getServletContext().getContextPath()%>/images/icone.png"></a>
+<a href="<%="/encheres/consulteraccueilconnexion"%>"><img class="ico2"  src="<%=getServletContext().getContextPath()%>/images/icone.png"></a>
 </head>
 
 <body>

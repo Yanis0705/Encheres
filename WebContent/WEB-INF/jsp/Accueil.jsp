@@ -15,7 +15,7 @@
 </head>
 
 <body>
-<a href="<%="/encheres/consulteraccueilconnexion"%>"><img class="ico2"  alt="Coup CHI" src="<%=getServletContext().getContextPath()%>/images/icone.png"></a>
+<a href="<%="/encheres/consulteraccueilconnexion"%>"><img class="ico2"   src="<%=getServletContext().getContextPath()%>/images/icone.png"></a>
 
 
 <%--  <%

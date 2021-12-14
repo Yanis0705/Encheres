@@ -15,7 +15,7 @@
 	
 
 		<div class="form_div">
-		<a href="<%="/encheres/consulteraccueilconnexion"%>"><img class="ico"  alt="Coup CHI" src="<%=getServletContext().getContextPath()%>/images/icone.png"></a>
+		<a href="<%="/encheres/consulteraccueilconnexion"%>"><img class="ico"  src="<%=getServletContext().getContextPath()%>/images/icone.png"></a>
 		
 			<p class="form_label">Troc-enchères</p>
 			<form method="post" action="/encheres/Login">

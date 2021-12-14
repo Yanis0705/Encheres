@@ -20,7 +20,7 @@
 
 <body>
 	
-<a href="<%="/encheres/consulteraccueilconnexion"%>"><img class="ico"  alt="Coup CHI" src="<%=getServletContext().getContextPath()%>/images/icone.png"></a>
+<a href="<%="/encheres/consulteraccueilconnexion"%>"><img class="ico" src="<%=getServletContext().getContextPath()%>/images/icone.png"></a>
 
 			<h3 class="form_label">
 			<p>	<a  href="/WEB-INF/jsp/Inscription.jsp">Troc-enchères.org</a></p>

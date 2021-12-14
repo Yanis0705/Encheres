@@ -10,7 +10,7 @@
 </style>
 
 <title>Vendu</title>
-<a href="<%="/encheres/consulteraccueilconnexion"%>"><img class="ico"  alt="Coup CHI" src="<%=getServletContext().getContextPath()%>/images/icone.png"></a>
+<a href="<%="/encheres/consulteraccueilconnexion"%>"><img class="ico"  src="<%=getServletContext().getContextPath()%>/images/icone.png"></a>
 </head>
 <body>
 	<div id="wrapper">
