@@ -21,8 +21,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+import fr.eni.zylim.encheres.bll.ArticleVenduManager;
 import fr.eni.zylim.encheres.bll.UtilisateurManager;
+import fr.eni.zylim.encheres.bo.ArticleVendu;
 import fr.eni.zylim.encheres.bo.Utilisateur;
 
 import fr.eni.zylim.encheres.dal.jdbc.UtilisateurDAOJdbcImpl;
@@ -52,6 +53,13 @@ public class Login extends HttpServlet {
 //		= this.getServletContext().getRequestDispatcher("/WEB-INF/views/loginView.jsp");
 //
 //dispatcher.forward(request, response);
+
+		List<ArticleVendu> listeArticle = ArticleVenduManager.getInstance().selectAllArticle();
+	
+		
+		System.out.println("listeArticle : " + listeArticle);
+		request.setAttribute("lesArticles", listeArticle);
+		getServletContext().getRequestDispatcher("/WEB-INF/jsp/AccountUtil.jsp").forward(request, response);
 	}
 
 	/**
@@ -62,6 +70,7 @@ public class Login extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
+		List<ArticleVendu> listeArticle = ArticleVenduManager.getInstance().selectAllArticle();
 		 request.getRequestDispatcher("/WEB-INF/jsp/AccountUtil.jsp").include(request, response);  
 		PrintWriter out = response.getWriter();
 		String userName = request.getParameter("userName");
@@ -81,14 +90,16 @@ public class Login extends HttpServlet {
 			// session if exist
 			// or create one
 			session.setAttribute("user", userName);
+			session.setAttribute("listeArticle", listeArticle);
 			session.setMaxInactiveInterval(30); // 30 seconds
 			//response.sendRedirect("encheres/WEB-INF/jsp/AccountUtil.jsp");
 	         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/jsp/AccountUtil.jsp");
 				dispatcher.forward(request, response);
 		} else {
+			//getServletContext().getRequestDispatcher("/WEB-INF/jsp/Accueil.jsp").forward(request, response);
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/Connexion.jsp");
-			out.println("<font color=red>Either user name or password is wrong.</font>");
-			rd.include(request, response);
+			out.println("<font color=red>Identifiant ou mot de passe incorrect.  .</font>");
+		rd.include(request, response);
 		} // TODO Auto-generated method stub
 
 	}

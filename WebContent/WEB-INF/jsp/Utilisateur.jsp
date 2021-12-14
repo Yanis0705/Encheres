@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
-
+<style><%@ include file="/style/Liste_uilisateur.css"%></style>
 <%@ page import="fr.eni.zylim.encheres.bo.Utilisateur"%>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+<link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
 <% String id=request.getParameter("id");
@@ -16,7 +15,8 @@ String un=request.getParameter("uname");
 <head>
 <meta http-equiv="Content-Type"
 	content="text/html; charset=windows-1256">
-<title>User Logged Successfully</title>
+<title>LIste utilisateurs</title>
+<a href="<%="/encheres/consulteraccueilconnexion"%>"><img class="ico2"  src="<%=getServletContext().getContextPath()%>/images/icone.png"></a>
 </head>
 
 <body>
@@ -68,12 +68,5 @@ String un=request.getParameter("uname");
 			</tbody>
 		</table>
 	</div>
-	<%--  
-         <center>
-        <center>
-        <h1>Welcome <%=un%></h1>
-        <h1>Your ID is <%=id%></h1>
-        </center>
-         </center>
- --%>
+	</body>
 </html>

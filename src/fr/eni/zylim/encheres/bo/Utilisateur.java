@@ -247,6 +247,13 @@ public class Utilisateur {
 		this.mot_de_passe = mot_de_passe;
 	}
 
+	public Utilisateur(int no_utilisateur, String pseudo) {
+		super();
+		this.no_utilisateur = no_utilisateur;
+		this.pseudo = pseudo;
+		
+	}
+
 
 	
 }

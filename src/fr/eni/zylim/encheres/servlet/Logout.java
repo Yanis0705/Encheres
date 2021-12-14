@@ -15,14 +15,14 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class Lougout
  */
-@WebServlet("/Lougout")
-public class Lougout extends HttpServlet {
+@WebServlet(name = "Logout", urlPatterns = { "/Logout" })
+public class Logout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Lougout() {
+    public Logout() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,7 +32,7 @@ public class Lougout extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	//	response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -40,7 +40,7 @@ public class Lougout extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+	
 		
 		  // TODO Auto-generated method stub
 	      response.setContentType("text/html");
@@ -48,10 +48,11 @@ public class Lougout extends HttpServlet {
 	      out.println("thanq you!!, Your session was destroyed successfully!!");
 	      HttpSession session = request.getSession(false);
 	      // session.setAttribute("user", null);
-	      session.removeAttribute("user");
+	     // session.removeAttribute("user");
 	      session.getMaxInactiveInterval();
 	      session.invalidate();  
-	      request.getRequestDispatcher("link.html").include(request, response);  
+	      getServletContext().getRequestDispatcher("/consulteraccueilconnexion").forward(request, response);
+	   //   request.getRequestDispatcher("link.html").include(request, response);  
           out.print("You are successfully logged out!");  
                       out.close();  
 	}
