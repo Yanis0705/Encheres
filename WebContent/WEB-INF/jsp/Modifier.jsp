@@ -21,7 +21,7 @@
 		<a href="/WEB-INF/jsp/Utilisateur.jsp">Troc-enchères.org</a>
 	</h3>
 	<h4>Modifier Profil</h4>
-
+<a href="<%="/encheres/consulteraccueilconnexion"%>"><img class="ico"  alt="Coup CHI" src="<%=getServletContext().getContextPath()%>/images/icone.png"></a>
 	<div class=Inscription>
 		<form action="modifierutilisateur" method="POST">
 			<div class="formulaire">

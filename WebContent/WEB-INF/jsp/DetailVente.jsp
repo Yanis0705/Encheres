@@ -21,6 +21,7 @@
 				<a href="#">Troc-enchères</a>
 			</p>
 			<form method="post" action="">
+			<a href="<%="/encheres/consulteraccueilconnexion"%>"><img class="ico"  alt="Coup CHI" src="<%=getServletContext().getContextPath()%>/images/icone.png"></a>
 
 				<p>
 					<img src="/*****" class="picture"
