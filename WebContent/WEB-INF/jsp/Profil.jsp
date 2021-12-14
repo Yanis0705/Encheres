@@ -14,6 +14,7 @@
 	href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap"
 	rel="stylesheet">
 <title>Profil</title>
+<a href="<%="/encheres/consulteraccueilconnexion"%>"><img class="ico"   src="<%=getServletContext().getContextPath()%>/images/icone.png"></a>
 </head>
 <%
 	Utilisateur utilisateur;

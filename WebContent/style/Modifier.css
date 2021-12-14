@@ -11,7 +11,15 @@ color: #5F634F;
 background-color:#CFEBDF;
 
 }
-
+.ico{
+    width:25%;
+    display:block;
+    height:15%;
+    background-color:#CFEBDF;
+    color:white;
+    text-decoration:none;
+    padding-left:20px;
+}
 .formulaire{
 padding-bottom: 40px;
 }

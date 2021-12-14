@@ -17,12 +17,14 @@
 <title>Inscription</title>
 
 </head>
+
 <body>
 	
+<a href="<%="/encheres/consulteraccueilconnexion"%>"><img class="ico" src="<%=getServletContext().getContextPath()%>/images/icone.png"></a>
 
-
-			<h3>
-				<a href="/WEB-INF/jsp/Inscription.jsp">Troc-enchères.org</a>
+			<h3 class="form_label">
+			<p>	<a  href="/WEB-INF/jsp/Inscription.jsp">Troc-enchères.org</a></p>
+	
 			</h3>
 
 			<h4>Créer un compte</h4>

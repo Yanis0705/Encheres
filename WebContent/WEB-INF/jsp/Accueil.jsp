@@ -16,7 +16,7 @@
 <title>Accueil</title>
 </head>
 <body>
-
+    <a href="<%="/encheres/consulteraccueilconnexion"%>"><img class="ico2"   src="<%=getServletContext().getContextPath()%>/images/icone.png"></a>
 <div id="wrapper">
 
 <div class="form_div">

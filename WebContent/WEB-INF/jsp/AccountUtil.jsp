@@ -8,7 +8,7 @@
 </head>
 <body>
 	<br>
-
+<a href="<%="/encheres/consulteraccueilconnexion"%>"><img class="ico"  src="<%=getServletContext().getContextPath()%>/images/icone.png"></a>
 
 	<%
       if (session != null) {

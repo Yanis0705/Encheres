@@ -6,16 +6,18 @@
 <head>
 
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-<style>
-<%@ include file="/style/responsive_style.css"%></style>
+<style><%@ include file="/style/responsive_style.css"%></style>
 
 <title>Page connexion</title>
 </head>
 <body>
 	<div id="wrapper">
+	
 
 		<div class="form_div">
-			<p class="form_label">Enchères</p>
+		<a href="<%="/encheres/consulteraccueilconnexion"%>"><img class="ico"  src="<%=getServletContext().getContextPath()%>/images/icone.png"></a>
+		
+			<p class="form_label">Troc-enchères</p>
 			<form method="post" action="/encheres/Login">
 
 				<p>
