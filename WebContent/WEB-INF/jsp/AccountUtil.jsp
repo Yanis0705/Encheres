@@ -94,14 +94,14 @@
 
 	</form>
 	
-	<c:forEach items="${lesArticles}" var="article">
+	<c:forEach items="${listeArticle}" var="listeArticle">
      
         	
-        <h3><a href ="/encheres/detailachatservlet">${article.nom_article}</a></h3>
-            <p>${article.description}</p>
-             <p>${article.prix_initial}</p>
-             <p>${article.date_fin_encheres}</p>
-           
+        <h3><a href ="/encheres/detailachatservlet">${listeArticle.nom_article}</a></h3>
+            <p>${listeArticle.description}</p>
+             <p>${listeArticle.prix_initial}</p>
+             <p>${listeArticle.date_fin_encheres}</p>
+         
     </c:forEach>
 
 </body>
