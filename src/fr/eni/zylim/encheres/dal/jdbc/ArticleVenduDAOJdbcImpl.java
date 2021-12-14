@@ -1,4 +1,4 @@
-package fr.eni.zylim.encheres.dal;
+package fr.eni.zylim.encheres.dal.jdbc;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -14,7 +14,6 @@ import fr.eni.zylim.encheres.bo.Retrait;
 import fr.eni.zylim.encheres.bo.Utilisateur;
 import fr.eni.zylim.encheres.dal.ArticleVenduDAO;
 import fr.eni.zylim.encheres.dal.DALException;
-import fr.eni.zylim.encheres.dal.jdbc.ConnectionProvider;
 
 public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 	private static final String SELECT_FILTER_NOM = "SELECT * FROM ARTICLES_VENDUS WHERE nom_article LIKE ?";
@@ -58,7 +57,7 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 					lesArticlesVendus.add(article);
 					
 			user = new Utilisateur(no_utilisateur,pseudo);
-			System.out.println("affichage article + utilisateur " + article + user);
+			System.out.println("affichage article + utilisateur " + article + user.getPseudo());
 				}
 				
 				}
@@ -71,51 +70,7 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 		}
 	
 
-	@Override
-	public List<ArticleVendu> selectByString(String filter) throws DALException {
-		List<ArticleVendu> lesArticlesVendus = new ArrayList<>();
-		Connection cnx = ConnectionProvider.getConnection();
-		PreparedStatement ordre = null;
-		try  {
-			ordre = (PreparedStatement) cnx.createStatement();
-			ResultSet resultat = null;
-			resultat = ordre.executeQuery(SELECT_FILTER_NOM);
-			resultat.updateString(1, "%" + filter + "%");
-			((PreparedStatement) resultat).execute();
-			ResultSet rs = ((Statement) resultat).getResultSet();
-			
-			while(rs.next()) {
-				lesArticlesVendus.add(hydrateArticleVendu(rs));
-			}
-			cnx.close();
-		}catch (SQLException e) {
-			e.printStackTrace();
-			throw new DALException(e.getMessage());
-			
-			
-		}
-			
-		
-		return lesArticlesVendus;
-	}
 
-	
-	private ArticleVendu hydrateArticleVendu(ResultSet rs)throws SQLException {
-
-		return new ArticleVendu(
-		
-				rs.getString("nom_article"),
-				rs.getString("description"),
-				rs.getDate("date_debut_encheres"),
-				rs.getDate("date_fin_encheres"),
-				rs.getInt("prix_initial"),
-				rs.getInt("prix_vente"),
-				rs.getBoolean("etat_vente"),
-				rs.getInt("no_utilisateur"),
-		
-				
-				);
-	}
 
 	@Override
 	public void updateArticleVendu(ArticleVendu data) throws DALException {
@@ -137,6 +92,12 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 
 	@Override
 	public List<ArticleVendu> selectByCategorie(int no_categorie) throws DALException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<ArticleVendu> selectByString(String filter) throws DALException {
 		// TODO Auto-generated method stub
 		return null;
 	}
