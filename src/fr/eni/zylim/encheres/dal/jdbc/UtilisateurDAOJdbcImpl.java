@@ -20,13 +20,13 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 	private static final String SQL_SELECT_UTILISATEUR_PROFILE = "select * from UTILISATEURS where pseudo=?";
 	private static final String SQL_SELECT_UTILISATEUR_BY_ID = "SELECT * FROM UTILISATEURS    WHERE no_utilisateur = ?";
-	private static final String SQL_SELECT_UTILISATEUR_SESSION_PSEUDO = "select * from UTILISATEURS where pseudo=pseudo AND mot_de_passe=password";
-	private static final String SQL_SELECT_UTILISATEUR_SESSION_MAIL = "select * from UTILISATEURS where email=eMail AND mot_de_passe=password";
+	private static final String SQL_SELECT_UTILISATEUR_SESSION_PSEUDO = "select * from UTILISATEURS where pseudo=? AND mot_de_passe=?";
+	private static final String SQL_SELECT_UTILISATEUR_SESSION_MAIL = "select * from UTILISATEURS where email=?  AND mot_de_passe=?";
 	private static final String SQL_INSERT_TO_UTILISATEUR = "INSERT INTO UTILISATEURS (pseudo,nom,prenom,email,telephone,rue,code_postal,ville, mot_de_passe,credit,administrateur) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 	private static final String SQL_UPDATE_UTILISATEUR = "UPDATE UTILISATEURS SET nom=?, prenom=?,email=?,telephone=?,rue=?, code_postal=?, ville=?,mot_de_passe=?, credit=?, administrateur=? WHERE no_utilisateur=?";
 	private static final String SQL_DELETE_UTILISATEUR = "DELETE UTILISATEURS WHERE no_utilisateur=?";
 
-	private static final String SQL_GET_ARTICLES_VENDUS_BY_UTILISATEUR_ID = "select * from ARTICLES_VENDUS WHERE no_utilisateur=?";
+	
 	private static final String SQL_GET_ALL_PSEUDOS = "SELECT pseudo FROM UTILISATEURS";
 
 	/********************************** constructeur vide ***********************/
@@ -78,10 +78,15 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 				// System.out.println(a);
 				System.out.println(listeUtilisateurs);
+				System.out.println("******");
 				// System.out.println("test select :"+selectUtilisateurByPseudo("toto"));
 
 				// System.out.println("test select by id:"+selectUtilisateurById(1));
-				// deleteUtilisateur(2);
+				// deleteUtilisateur(1);
+				String x="boom";
+				String y="14541";
+				System.out.println("BOOLEAN"+authenticate_Pseudo(x,y));
+				//System.out.println("BOOLEAN2 " +authenticate("FQFZQ","FDKGJFDS"));
 			}
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
@@ -149,31 +154,25 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	 * Authentification BY PSEUDO
 	 ******************************/
 	@Override
-	public boolean authenticate_Pseudo(String pseudo, String password) {
-
-		Boolean result = false; // Set result to false
-		try (Connection conn = ConnectionProvider.getConnection()) {
-
-			PreparedStatement ps = conn.prepareStatement(SQL_SELECT_UTILISATEUR_SESSION_PSEUDO);
-			ps.setString(1, pseudo); // Set 1st WHERE to eMail
-			ps.setString(2, password); // Set 2nd WHERE to password
-
-			ResultSet rs = ps.executeQuery(); // Execute Query
-
-			// Check if there is a db result matching the email and password
-			if (!rs.next() && rs.getRow() == 0) {
-				result = false; // If there is no result set false
-				System.out.println("User details are incorrect.");
-			} else {
-				result = true; // If there is a result set true
-				System.out.println("User logged in.");
-			}
-		} catch (SQLException e) {
-			// e.printStackTrace();
-			throw new RuntimeException(e);
-		}
-
-		return result;
+	public boolean authenticate_Pseudo(String pseudo, String password)  {
+		        boolean isUser = false;
+		        try {
+		            Connection con = ConnectionProvider.getConnection();
+		            PreparedStatement statement = con.prepareStatement(SQL_SELECT_UTILISATEUR_SESSION_PSEUDO);
+		            statement.setString(1, pseudo);
+		            statement.setString(2, password);
+		            ResultSet result = statement.executeQuery();
+		            if (result.next()) {
+		                isUser = true;
+		                System.out.println("User authenticated successfully");
+		            } else {
+		                System.out.println("Invalid username or password!");
+		            }
+		        } catch (Exception e) {
+		            System.out.println("DB related Error");
+		            e.printStackTrace();
+		        }
+		        return isUser;
 
 	}
 
@@ -236,21 +235,23 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 
 	}
 
-	/******************************* Delete user **************************/
+	/******************************* Delete user 
+	 * @return **************************/
 	@Override
-	public void deleteUtilisateur(int id_Utilisateur) throws DALException {
+	public boolean deleteUtilisateur(int id_Utilisateur) throws DALException {
+		
 		try (Connection cnx = ConnectionProvider.getConnection()) {
 			PreparedStatement pStmt = cnx.prepareStatement(SQL_DELETE_UTILISATEUR);
 			pStmt.setInt(1, id_Utilisateur);
 
 			// n = nombre de lignes supprim�es (ici, soit 1 soit 0).
-			int n = pStmt.executeUpdate();
+			 pStmt.executeUpdate();
 
-			// return n == 1;//si 1 ligne supprim�e --> true, sinon false
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DALException(e.getMessage());
 		}
+		return false;
 
 	}
 
