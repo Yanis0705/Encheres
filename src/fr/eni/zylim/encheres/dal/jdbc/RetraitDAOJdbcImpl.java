@@ -1,9 +1,9 @@
 package fr.eni.zylim.encheres.dal.jdbc;
 
+import fr.eni.zylim.encheres.dal.RetraitDAO;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
 import fr.eni.zylim.encheres.bo.Retrait;
 import fr.eni.zylim.encheres.dal.RetraitDAO;
 
@@ -28,4 +28,5 @@ public class RetraitDAOJdbcImpl implements RetraitDAO {
 		return retrait;
 	}
 	}
+
 
