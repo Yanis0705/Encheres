@@ -15,9 +15,6 @@ import fr.eni.zylim.encheres.bll.UtilisateurManager;
 import fr.eni.zylim.encheres.bo.Utilisateur;
 import fr.eni.zylim.encheres.dal.DALException;
 
-import fr.eni.zylim.encheres.bo.Utilisateur;
-import fr.eni.zylim.encheres.dal.jdbc.UtilisateurDAOJdbcImpl;
-
 /**
  * Servlet implementation class AjouterUtilisateurServlet
  */
@@ -45,6 +42,7 @@ public class AjouterUtilisateurServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		getServletContext().getRequestDispatcher("/WEB-INF/jsp/Inscription.jsp").forward(request, response);
+		//getServletContext().getRequestDispatcher("/WEB-INF/jsp/Utilisateur.jsp").forward(request, response);
 	}
 
 	/**

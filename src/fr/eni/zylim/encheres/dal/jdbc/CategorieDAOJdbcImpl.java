@@ -1,13 +1,11 @@
 package fr.eni.zylim.encheres.dal.jdbc;
 
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import fr.eni.zylim.encheres.bo.Categorie;
 import fr.eni.zylim.encheres.dal.CategorieDAO;
 
@@ -55,6 +53,5 @@ public class CategorieDAOJdbcImpl implements CategorieDAO{
 	}
 }
 
-public class CategorieDAOJdbcImpl {
-}
+
 

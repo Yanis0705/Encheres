@@ -43,25 +43,35 @@
            
        </select>
    </p>
-   <input type="submit" value="Rechercher">
+   <input class="btnRechercher" type="submit" value="Rechercher">
 </form>
 
   
 
 
-<div class = "tous_les_articles">
+ <div class = "tous_les_articles">
 
-<div class= un_article>
+<!-- <div class= un_article> -->
 
-<img src="url" />
+<!-- <img src="url" /> -->
+<br>
  <c:forEach items="${lesArticles}" var="article">
      
-        	
-        <h3><a href ="/encheres/detailachatservlet">${article.nom_article}</a></h3>
-            <p>${article.description}</p>
-             <p>${article.prix_initial}</p>
-             <p>${article.date_fin_encheres}</p>
-           
+    <a href ="/encheres/detailachatservlet" class="nounderline">
+  <div class="card-trip nounderline">
+
+  <div class="card-trip-infos">
+ <img src="" />
+    <div>
+      <h2 >${article.nom_article}</h2>
+      <p>${article.description}</p>
+      <p>${article.date_fin_encheres}</p>
+    </div>
+    <h2 class="card-trip-pricing nounderline">${article.prix_initial}  pts</h2>
+  </div>
+</div>
+</a>
+<br>
     </c:forEach>
     
 <p class = "retrait">afficher l'adresse de retrait</p>
