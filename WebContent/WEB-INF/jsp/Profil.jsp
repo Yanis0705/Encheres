@@ -2,7 +2,10 @@
 	pageEncoding="UTF-8"%>
 
 <%@ page import="fr.eni.zylim.encheres.bo.Utilisateur"%>
-
+	
+<%@page import="fr.eni.zylim.encheres.bll.UtilisateurManager"%>
+<%@ page import="java.util.List" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,20 +29,28 @@
 		<a href="/WEB-INF/jsp/Inscription.jsp">Troc-enchères.org</a>
 	</h3>
 
-	<h4>Créer un compte</h4>
+	<h4>votre profile</h4>
 	<br>
+<%
+
+Utilisateur user = (Utilisateur)request.getAttribute("userprofile");
+
+%>
 
 
+	
 	<%
-		if (session != null) {
-			if (session.getAttribute("user") != null) {
-				String name = (String) session.getAttribute("user");
-				out.print("Hello, " + name + "  Welcome to ur Profile");
-			} else {
-				response.sendRedirect("login.html");
-			}
-		}
-	%>
+      if (session != null) {
+         if (session.getAttribute("user") != null) {
+            String name = (String) session.getAttribute("user");
+            out.print("Bienvenue  " + name + "  ");
+         } else {
+            response.sendRedirect("/WEB-INF/jsp/AccountUtil.jsp");
+         }
+      }
+   %>
+	
+	
 	</br>
 	</br>
 
@@ -47,10 +58,15 @@
 
 	<form action="<%=request.getContextPath()%>/ModifierUtilisateurServlet.java" method="POST">
 
-		<h3>
-			<a href="/WEB-INF/jsp/Utilisateur.jsp">Troc-enchères.org</a>
-		</h3>
-		<h4>recuperer le nom de la base de données</h4>
+		
+		<tr ><%= user.getNo_utilisateur()%></tr>
+					<tr><%= user.getPseudo() %></tr>
+					<tr><%= user.getNom() %></tr>
+					<tr><%= user.getPrenom() %></tr>
+					<tr><%= user.getEmail() %></tr>
+
+					<tr><%= user.getTelephone() %></tr>
+					<tr><%= user.getCredit() %></tr>
 
 		<div class="Profil">
 

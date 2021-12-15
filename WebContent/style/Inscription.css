@@ -113,7 +113,7 @@ grid-template-columns: 1fr;
 grid-template-columns: 1fr;
 }
 }
-<<<<<<< HEAD
+
 table th{
  visibility:visible;
  display:block;
@@ -126,7 +126,7 @@ table th{
 @media (min-width: 768px) {
 .cards {
 grid-template-columns: 1fr 1fr;
->>>>>>> 0f16d1dabdd345107ecb80bcadcb7f3da633122e
+
 }
 }
 

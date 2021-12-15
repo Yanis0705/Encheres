@@ -14,7 +14,16 @@ body
     background-color:#CFEBDF;
     color:white;
     text-decoration:none;
-    padding-left:20px;
+    padding-left:45%;
+}
+.ico3{
+    width:10%;
+    display:block;
+    height:9%;
+    background-color:#CFEBDF;
+    color:white;
+    text-decoration:none;
+    padding-left:45%;
 }
 a {
   color: #5f634f;

@@ -18,6 +18,10 @@
 		<a href="<%="/encheres/consulteraccueilconnexion"%>"><img class="ico"  src="<%=getServletContext().getContextPath()%>/images/icone.png"></a>
 		
 			<p class="form_label">Troc-enchères</p>
+			
+	<!-- 	envoyer la forme ver login servlet  avec la method post-->
+	
+	
 			<form method="post" action="/encheres/Login">
 
 				<p>
