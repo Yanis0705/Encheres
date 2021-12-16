@@ -20,19 +20,20 @@
 
 <body>
 	
-<a href="<%="/encheres/consulteraccueilconnexion"%>"><img class="ico" src="<%=getServletContext().getContextPath()%>/images/icone.png"></a>
+	<div>
+			<a href="<%="/encheres/consulteraccueilconnexion"%>"><img class="ico" src="<%=getServletContext().getContextPath()%>/images/icone.png"></a>
 
 			<h3 class="form_label">
-			<p>	<a  href="/WEB-INF/jsp/Inscription.jsp">Troc-enchères.org</a></p>
+			<p>	<a  href="/WEB-INF/jsp/Inscription.jsp">Troc-enchères</a></p>
 	
 			</h3>
 
 			<h4>Créer un compte</h4>
+	</div>
 		
-		
-			<form action="<c:url value="/EnregisterUtilisateur" />" method="post">
+	<form action="<c:url value="/EnregisterUtilisateur" />" method="post">
 
-				<table align=center cellspacing=10>
+				<table align="center">
 
 					<tr>
 						<td class="column1">Pseudo:</td>
@@ -49,9 +50,9 @@
 
 
 					<tr>
-						<td class="column1">Prenom:</td>
+						<td class="column1">Prénom:</td>
 						<td><input type="text" placeholder="Prénom" name="prenom"
-							value="${param.prenom}">></td>
+							value="${param.prenom}"></td>
 					</tr>
 
 
@@ -103,27 +104,28 @@
 							name="confirmation" value="${param.confirmation}"></td>
 					</tr>
 					<tr>
-						<td class="column1">credit :</td>
+						<td class="column1">Crédit :</td>
 						<td><input type="text" placeholder="credit" name="credit"
 							value="${param.credit}"></td>
 					</tr>
 
 				</table>
-
-				<div class="boutonsInscription">
-				
-						<a href="/WEB-INF/jsp/Utilisateur.jsp">
-							<button type="submit">Créer</button>
-						</a>
-					</div>
-</form> 
-</body>
-					<form  class="form-1" action="connexionutilisateur">
-
-
-						<button  id="btn_i" class="btn-creer" href="/WEB-INF/jsp/Connexion.jsp">Annuler</button>
-					</form>
-				
+	</form>
 	
+	<form class="boutonInscription" method="post" action="connexionutilisateur">
+		<div class="boutonInscription">
+				<button id="btn-j" class="btn-creer" type="submit" href="/WEB-INF/jsp/Utilisateur.jsp">Créer</button>
+		</div>		
 
+	
+		<div class="boutonInscription" action="consulteraccueilconnexion">
+	
+				<button  id="btn_i" class="btn-creer" type="button"  href="	/WEB-INF/jsp/Accueil.jsp">Annuler</button>
+		</div>				
+	</form>
+				
+	</body>
 </html>
+
+
+<!-- href="/WEB-INF/jsp/Accueil.jsp" -->

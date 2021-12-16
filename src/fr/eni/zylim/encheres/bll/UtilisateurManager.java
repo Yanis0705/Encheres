@@ -96,6 +96,35 @@ public class UtilisateurManager {
 	
 /***********************************************************************/
 	
+	public boolean authenticate_Pseudo_login(String pseudo,String password) throws DALException {
+	
+		boolean bool=false;
+
+		bool = utilisateurDAO.authenticate_Pseudo(pseudo,password);
+
+		return bool;
+
+	}
+	
+	
+/***********************************************************************/
+	
+	public boolean authenticate_Pseudo_delete(int id) throws DALException {
+	
+		boolean bool=false;
+		try {
+			bool = utilisateurDAO.deleteUtilisateur(id);
+		} catch (DALException dale) {
+			dale.printStackTrace();
+		}
+		
+
+		return bool;
+
+	}
+	
+/***********************************************************************/
+	
 	public Utilisateur ajouterUtilisateur(Utilisateur nouveauUtilisateur) throws DALException {
 
 		
