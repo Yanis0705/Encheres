@@ -1,7 +1,6 @@
 package fr.eni.zylim.encheres.servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.zylim.encheres.bll.ArticleVenduManager;
+
 
 import fr.eni.zylim.encheres.bll.BLLException;
 import fr.eni.zylim.encheres.bll.QueyCollection;
@@ -40,12 +40,12 @@ public class ConsulterAccueilConnexionServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
-
+//A voir
+		// List<ArticleVendu> listeArticle = ArticleVenduManager.getInstance().selectAllArticle();
 	
+
 //		List<ArticleVendu> listeArticle = ArticleVenduManager.getInstance().selectAllArticle();
-//		List<Utilisateur> mesUtilisateurs = UtilisateurManager.getInstance().listeUtilisateurs();
-//		
+//		List<Utilisateur> mesUtilisateurs = UtilisateurManager.getInstance().listeUtilisateurs();		
 	
 		List<QueyCollection> listeArticle = null;
 		try {
@@ -56,7 +56,6 @@ public class ConsulterAccueilConnexionServlet extends HttpServlet {
 		}
 
 
-		
 		System.out.println("listeArticle : " + listeArticle);
 		// Déposer les objets nécessaires aux composants suivants
 		request.setAttribute("lesArticles", listeArticle);

@@ -6,7 +6,6 @@ import java.util.List;
 
 
 import fr.eni.zylim.encheres.bo.ArticleVendu;
-
 import fr.eni.zylim.encheres.dal.ArticleVenduDAO;
 import fr.eni.zylim.encheres.dal.DALException;
 import fr.eni.zylim.encheres.dal.DAOFactory;
@@ -16,10 +15,10 @@ public class ArticleVenduManager {
 	
 private static ArticleVenduManager instance;
 	
-	private static ArticleVenduDAO dao;
+	private static ArticleVenduDAO articleVendudao;
 	
-	private ArticleVenduManager() {
-		dao = DAOFactory.getArticleVenduDAO();
+	public ArticleVenduManager() {
+		articleVendudao = DAOFactory.getArticleVenduDAO();
 	};
 
 	public static ArticleVenduManager getInstance() {
@@ -32,13 +31,20 @@ private static ArticleVenduManager instance;
 	public static List<ArticleVendu> selectAllArticle(){
 		List<ArticleVendu> lesArticles = new ArrayList<ArticleVendu>();
 		try {
-		lesArticles = dao.selectAllArticle();
+		lesArticles = articleVendudao.selectAllArticle();
 		} catch (DALException e) {
 			e.printStackTrace();
 			
 		}
 		return lesArticles;
 	}
+
+	public ArticleVendu nouvelleVente(ArticleVendu article) throws DALException {
+		 article = articleVendudao.insertArticleVendu(article);
+		 System.out.println(article.getNo_categorie());
+		return article;	
+	}
+
 	public static List<QueyCollection> selectAllArticleRetraitMang() throws DALException{
 		List<QueyCollection> lesArticles = new ArrayList<QueyCollection>();
 		try {
@@ -50,7 +56,6 @@ private static ArticleVenduManager instance;
 		return lesArticles;
 		}
 	
-
 }
 
 

@@ -22,7 +22,7 @@ public interface UtilisateurDAO {
 
 	boolean authenticate_Mail(String eMail, String password);
 
-	void deleteUtilisateur(int id_Utilisateur) throws DALException;
+	boolean deleteUtilisateur(int id_Utilisateur) throws DALException;
 
 	Utilisateur insertUtilisateur(Utilisateur nouvelUtilisateur) throws DALException;
 

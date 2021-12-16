@@ -3,18 +3,22 @@
 
 <%@ page import="fr.eni.zylim.encheres.bo.Utilisateur"%>
 
+<%@page import="fr.eni.zylim.encheres.bll.UtilisateurManager"%>
+<%@ page import="java.util.List"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-<style>
-<%@ include file="/style/Profil.css"%></style>
+<style><%@include file="/style/Profil.css"%></style>
 <link
 	href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap"
 	rel="stylesheet">
 <title>Profil</title>
-<a href="<%="/encheres/consulteraccueilconnexion"%>"><img class="ico"   src="<%=getServletContext().getContextPath()%>/images/icone.png"></a>
+<a href="<%="/encheres/consulteraccueilconnexion"%>"><img
+	class="ico"
+	src="<%=getServletContext().getContextPath()%>/images/icone.png"></a>
 </head>
 <%
 	Utilisateur utilisateur;
@@ -23,43 +27,35 @@
 
 
 	<h3>
-		<a href="/WEB-INF/jsp/Inscription.jsp">Troc-enchères.org</a>
+		<a href="/WEB-INF/jsp/Inscription.jsp">Troc-encheres.org</a>
 	</h3>
 
 	<h4>votre profile</h4>
 	<br>
-<%
+	<%
+		Utilisateur user = (Utilisateur) request.getAttribute("userprofile");
+	%>
 
-Utilisateur user = (Utilisateur)request.getAttribute("userprofile");
 
-%>
 
 	<%
 		if (session != null) {
 			if (session.getAttribute("user") != null) {
 				String name = (String) session.getAttribute("user");
-				out.print("Hello, " + name + "  Welcome to ur Profile");
+				out.print("Bienvenue  " + name + "  ");
 			} else {
-				response.sendRedirect("login.html");
+				response.sendRedirect("/WEB-INF/jsp/AccountUtil.jsp");
 			}
 		}
 	%>
+
 	</br>
 	</br>
 
 
 
-	<form action="<%=request.getContextPath()%>/ModifierUtilisateurServlet.java" method="POST">
+	<form>
 
-		
-		<tr ><%= user.getNo_utilisateur()%></tr>
-					<tr><%= user.getPseudo() %></tr>
-					<tr><%= user.getNom() %></tr>
-					<tr><%= user.getPrenom() %></tr>
-					<tr><%= user.getEmail() %></tr>
-
-					<tr><%= user.getTelephone() %></tr>
-					<tr><%= user.getCredit() %></tr>
 
 		<div class="Profil">
 
@@ -68,49 +64,49 @@ Utilisateur user = (Utilisateur)request.getAttribute("userprofile");
 
 				<tr>
 					<td class="column1">Pseudo:</td>
-					<td>Pseudo</td>
+					<td>${userlogin.pseudo}</td>
 				</tr>
 
 
 				<tr>
 					<td class="column1">Nom:</td>
-					<td>nom</td>
+					<td>${userlogin.nom}</td>
 				</tr>
 
 
 				<tr>
 					<td class="column1">Prenom:</td>
-					<td>Prenom</td>
+					<td>${userlogin.prenom}</td>
 				</tr>
 
 
 				<tr>
 					<td class="column1">Email :</td>
-					<td>email</td>
+					<td>${userlogin.email}</td>
 				</tr>
 
 
 				<tr>
-					<td class="column1">Téléphone :</td>
-					<td>telephone></td>
+					<td class="column1">Telephone :</td>
+					<td>${userlogin.telephone}</td>
 				</tr>
 
 
 				<tr>
 					<td class="column1">Rue :</td>
-					<td>rue</td>
+					<td>${userlogin.rue}</td>
 				</tr>
 
 
 				<tr>
 					<td class="column1">Code Postal:</td>
-					<td>code_postal</td>
+					<td>${userlogin.code_postal}</td>
 				</tr>
 
 
 				<tr>
 					<td class="column1">Ville :</td>
-					<td>ville</td>
+					<td>${userlogin.ville}</td>
 				</tr>
 
 			</table>
@@ -119,8 +115,11 @@ Utilisateur user = (Utilisateur)request.getAttribute("userprofile");
 		<div></div>
 
 		<DIV>
-			<form action="modifierprofil">
+			<form action="modifierutilisateur" action="post">
 				<button class="btn-enregistrer">Modifier</button>
+			</form>
+			<form name="main0" action="modifierutilisateur" method="post">
+				<input type="submit" value="Modifierr">
 			</form>
 
 		</DIV>

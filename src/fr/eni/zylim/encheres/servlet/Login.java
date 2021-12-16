@@ -21,10 +21,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+import fr.eni.zylim.encheres.bll.ArticleVenduManager;
 import fr.eni.zylim.encheres.bll.UtilisateurManager;
+import fr.eni.zylim.encheres.bo.ArticleVendu;
 import fr.eni.zylim.encheres.bo.Utilisateur;
-
+import fr.eni.zylim.encheres.dal.DALException;
 import fr.eni.zylim.encheres.dal.jdbc.UtilisateurDAOJdbcImpl;
 
 /**
@@ -48,10 +49,7 @@ public class Login extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-//		RequestDispatcher dispatcher //
-//		= this.getServletContext().getRequestDispatcher("/WEB-INF/views/loginView.jsp");
-//
-//dispatcher.forward(request, response);
+
 	}
 
 	/**
@@ -60,36 +58,51 @@ public class Login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//doGet(request, response);
-		 request.getRequestDispatcher("/WEB-INF/jsp/AccountUtil.jsp").include(request, response);  
-		PrintWriter out = response.getWriter();
+		/***********recuperer la liste d'article ******************/
+		List<ArticleVendu> listeArticle = ArticleVenduManager.getInstance().selectAllArticle();
+		
+	
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
+		Utilisateur userlogin=UtilisateurManager.getInstance().getUtilisateurProfile(userName);
 		// recuperer l'utilisateur en cours
-		Utilisateur user = UtilisateurManager.getInstance().getUtilisateurProfile(userName);
+		boolean auth = false;
+		try {
+			auth = UtilisateurManager.getInstance().authenticate_Pseudo_login(userName, password);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-		System.out.println("Utilisateur  profile: " + user);
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
 
-		// Déposer les objets nécessaires aux composants suivants
-		request.setAttribute("Utilisateur", user);
-
-		if (userName.equals(user.getPseudo()) && password.equals(user.getMot_de_passe())) {
-
+		if (auth) {
+			
 			out.print("Welcome, " + userName);
+			
+			
+			
 			HttpSession session = request.getSession(true); // reuse existing
 			// session if exist
 			// or create one
 			session.setAttribute("user", userName);
-			session.setMaxInactiveInterval(30); // 30 seconds
-			//response.sendRedirect("encheres/WEB-INF/jsp/AccountUtil.jsp");
-	         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/jsp/AccountUtil.jsp");
-				dispatcher.forward(request, response);
+			session.setAttribute("userlogin", userlogin);
+			session.setAttribute("listeArticle", listeArticle);
+			session.setMaxInactiveInterval(600); // 30 seconds
+
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/jsp/AccountUtil.jsp");
+			dispatcher.forward(request, response);
+			out.close();
 		} else {
-			//getServletContext().getRequestDispatcher("/WEB-INF/jsp/Accueil.jsp").forward(request, response);
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/Connexion.jsp");
+		
 			out.println("<font color=red>Identifiant ou mot de passe incorrect.  .</font>");
-		rd.include(request, response);
+			
+			
+			getServletContext().getRequestDispatcher("/WEB-INF/jsp/Connexion.jsp").forward(request, response);
+			out.close();
+			
+
 		} // TODO Auto-generated method stub
 
 	}

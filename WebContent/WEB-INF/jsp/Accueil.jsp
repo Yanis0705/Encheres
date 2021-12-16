@@ -32,9 +32,6 @@
 </div>
 
 
-
-
-
 <div class ="filtre_recherche">
 
 <div class = "filtre_categorie">
@@ -65,14 +62,6 @@
    </div>
    </div>
 <!-- </form> -->
-
- 
- 
- 
- 
- 
- 
- 
 <div class = "les_articles">
 
 
@@ -82,47 +71,20 @@
      
               <img src= "${article.image_article}" id ="image_article"/>
        </div>  
-          <div class ="affiche"> 	
-        
-           <h3><a href ="/encheres/detailachatservlet">${article.nom_article}</a></h3> 
-<p>${article.description}</p>
-<p>${article.date_debut_encheres}</p>
-<p>${article.rue}</p>
-<p>${article.code_postal}</p>
-<p>${article.ville}</p>
-<p>${article.pseudo}</p> 
-<p>${article.prix_initial} pts</p> 
-
-
-            
-
-           
-          
+      <div class ="affiche"> 
+      <h3><a href ="/encheres/detailachatservlet">${article.nom_article}</a></h3> 
+      <p>${article.description}</p>
+      <p>${article.date_debut_encheres}</p>
+      <p>${article.rue}</p>
+      <p>${article.code_postal}</p>
+      <p>${article.ville}</p>
+      <p>${article.pseudo}</p> 
+      <p>${article.prix_initial} pts</p>        
           
     </div>   
-    </div>
-    
-       
-           
+    </div>      
     </c:forEach> 
-        
- 
-    
-    
+
     </div>
-  <!--   
-    <form action="upload" method="post" enctype="multipart/form-data">
-    <input type="text" name="description" />
-    <input type="file" name="file" />
-    <input type="submit" />
-</form> -->
-    
-  
-    
-
-
-
-
-
 </body>
 </html>
