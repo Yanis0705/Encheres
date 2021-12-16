@@ -55,11 +55,6 @@ public class VendreArticleServlet extends HttpServlet {
 	     int noUtil =  utilisateur.getNo_utilisateur();
 
 		ArticleVendu article = new ArticleVendu(nom, description, dateDebutEncheres, dateFinEncheres, miseAPrix, miseAPrix, noUtil, categorieId, false);
-
-		
-	
-
-System.out.println(article);
 		
 			try {
 				ArticleVenduManager articleVenduManager  = new ArticleVenduManager();
