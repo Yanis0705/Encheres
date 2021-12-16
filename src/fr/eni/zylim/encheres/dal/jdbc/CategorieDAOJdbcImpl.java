@@ -17,7 +17,7 @@ public class CategorieDAOJdbcImpl implements CategorieDAO{
 			
 	@Override
 	public Categorie getById(int categerieId) throws SQLException {
-		Categorie categorie = null;
+		Categorie categorie = new Categorie();
 
 		Connection cnx = ConnectionProvider.getConnection();
 
@@ -27,7 +27,6 @@ public class CategorieDAOJdbcImpl implements CategorieDAO{
 			ResultSet rs = statement.executeQuery();
 			
 			if(rs.next()) {
-				categorie= new Categorie();
 				categorie.setNo_categorie(rs.getInt("no_categorie"));
 				categorie.setLibelle(rs.getString("libelle"));
 			}		

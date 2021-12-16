@@ -13,7 +13,7 @@ public interface ArticleVenduDAO {
 	List<ArticleVendu> selectByString(String filter) throws DALException;
 	List<ArticleVendu> selectByCategorie(int  no_categorie) throws DALException;
 	
-	void insertArticleVendu(ArticleVendu nouvelArticle) throws DALException;
+	ArticleVendu insertArticleVendu(ArticleVendu nouvelArticle) throws DALException;
 	void updateArticleVendu(ArticleVendu articleUpdate) throws DALException;
 	void deleteArticleVendu(int no_Article) throws DALException;
 }

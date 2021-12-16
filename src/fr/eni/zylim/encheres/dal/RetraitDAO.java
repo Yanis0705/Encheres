@@ -14,5 +14,7 @@ import fr.eni.zylim.encheres.bo.Retrait;
 public interface RetraitDAO {
 
 	public Retrait insert (Retrait retrait) throws SQLException;
-	}
 
+	public Retrait selectionnerByNoArticle(int noArticle)throws SQLException, DALException;
+
+}

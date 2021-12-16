@@ -3,10 +3,10 @@
 <%@page import="fr.eni.zylim.encheres.bo.Categorie"%>
 <%@page import="fr.eni.zylim.encheres.bll.UtilisateurManager"%> 
 <%@page import="fr.eni.zylim.encheres.bo.Utilisateur"%> 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="fr">
     <head>
     	<meta charset="UTF-8">
@@ -40,33 +40,27 @@
       }
     	
 %>   
-      <form class="paveArticle" action="<%=request.getContextPath()%>/vendrearticle" method="post"> 
-      
-        <div class="">
-          <label for="article">Article :</label>
-          <input class="input" type="text" name="article" id="article"  placeholder="Article" required>
-        </div>
+    <%--   <form class="paveArticle" action="<%=request.getContextPath()%>/vendrearticle" method="post">  --%>
+      <form action="<c:url value="/vendrearticle"/>" method="post">
+      <table align=center cellspacing=10>
+        <tr>
+          <td for="article">Article :</td>
+          <td><input class="input" type="text" name="nom" id="article"  placeholder="Nom de l'article" value="${param.nom}" required></td>
+        </tr>
 
-        <div class="">
-          <label for="description">Description :</label>
-          <textarea class="input"name="description" id="description" placeholder="Entrez une description de l'article"></textarea>
-        </div>
+        <tr>
+          <td for="description">Description :</td>
+          <td><textarea class="input"name="description" id="description" placeholder="Entrez une description de l'article"  value="${param.description}"></textarea>
+        </tr>
 
-        <div class="">
-          <label for="categorie">Catégorie :</label>
-<!--   <select name="categories" id="categories">
-        	 <option value="informatique">Informatique</option>
-			<option value="ameublement">Ameublement</option>
-			<option value="vetement">Vetement</option>
-			<option value="sport">Sport</option>
-			<option value="loisirs">Loisirs</option>
-		</select>  -->
-            <select name="categorie" class="input" id="categorie">
+        <tr>
+          <td for="categorie">Catégorie :</td>
+            <td><select  name="categorie" class="input" id="categorie">
 			<% for(Categorie categorie : CategorieManager.selectionnerToutesLesCategories()) { %>
-            	<option  value ="<%=categorie.getNo_categorie()%>"><%=categorie.getLibelle()%></option>
+            	<option   value ="<%=categorie.getNo_categorie()%>"><%=categorie.getLibelle()%></option>
              <% } %>
-          </select>
-        </div>
+          </select></td>
+        </tr>
       
 <!--         <div class="">
           <label for="file">Photo de l'article :</label>
@@ -76,51 +70,51 @@
           </div>
         </div> -->
        
-        <div class="">
-              <label for="prixBase">Mise à prix :</label>
-              <input class="input" type="number" name="prixBase" id="prixBase" 
-              step="1" max= "10000" required>
-        </div>
+        <tr>
+              <td for="prixBase">Mise à prix :</td>
+             <td> <input class="input" type="number" name="prixBase" id="prixBase" 
+              step="1" max= "10000"  value="${param.prixBase}" required></td>
+        </tr><br>
 
-        <div class="">
-            <label for="dateDebutEnchere">Début de l'enchère :</label>
-            <input class="input" type="date" name="dateDebutEnchere" id="dateDebutEnchere" required> 
-        </div>
+        <tr>
+            <td for="dateDebutEnchere">Début de l'enchère :</td>
+            <td><input class="input" type="date" name="dateDebutEnchere" id="dateDebutEnchere"  value="${param.dateDebutEnchere}"  required></td> 
+        </tr><br>
 
-        <div class="">
-            <label for="dateFinEnchere">Fin de l'enchère :</label>
-            <input class= "input" type="date" name="dateFinEnchere" id="dateFinEnchere" required> 
-        </div>
+        <tr>
+            <td for="dateFinEnchere">Fin de l'enchère :</td>
+           <td> <input class= "input" type="date" name="dateFinEnchere" id="dateFinEnchere" value="${param.dateFinEnchere}" required></td> 
+        </tr><br>
 
     <!-- Retrait-->
     <div class="">
-      <div class="">
-          <label for="rue">Rue :</label>
-                <input class="input" type="text" name="rue" id="rue" maxlength="100" value="<%=user.getRue() %>" required> 
+      <tr>
+          <td for="rue">Rue :</td>
+          <td> <input class="input" type="text" name="rue" id="rue" maxlength="100" value="<%=user.getRue() %>" required></td> 
+      </tr><br>
 
-      </div>
+       <tr>
+         <td for="codePostal">Code Postal :</td>
+        <td> <input class="input" type="text" name="codePostal" id="cp" 
+          step="1000" min="0" maxlength="5" value="<%=user.getCode_postal()%>" required></td>
+      </tr> <br>
 
-       <div class="">
-          <label for="cp">Code Postal :</label>
-         <input class="input" type="text" name="codePostal" id="cp" 
-          step="1000" min="0" maxlength="5" value="<%=user.getCode_postal()%>" required>
-      </div> 
+      <tr>
+         <td for="ville">Ville :</td>
+		<td><input class="input" type="text" name="ville" id="ville" value="<%=user.getVille()%>" required></td>
 
-      <div class="">
-         <label for="ville">Ville :</label>
-		<input class="input" type="text" name="ville" id="ville" value="<%=user.getVille()%>" required>
-
-      </div>
+      </tr><br>
     </div>
-
+</table>
         <div class="boutonsEnregistrerAnnuler">
           <button class="btn-enregistrer" type="submit" >Vendre</button>
-        </div>
-	<form class="boutonsEnregistrerAnnuler" action="connexionutilisateur">
-	<button class="btn-retour">Annuler</button>
-	</form>
+        </div><br>
+
        
       </form>
+      	<form class="boutonsEnregistrerAnnuler" action="connexionutilisateur">
+	<button class="btn-retour">Annuler</button>
+	</form>
     </section>
 
 </body>
