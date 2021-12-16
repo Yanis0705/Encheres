@@ -67,7 +67,9 @@ margin-left: +50%;
  text-align: center;
 }
 
-
+a.nounderline {
+	text-decoration: none; 
+}
 
 .cards {
 display: grid;
@@ -104,7 +106,6 @@ table th{
 @media (min-width: 768px) {
 .cards {
 grid-template-columns: 1fr 1fr;
->>>>>>> 0f16d1dabdd345107ecb80bcadcb7f3da633122e
 }
 }
 

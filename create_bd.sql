@@ -44,7 +44,7 @@ CREATE TABLE ARTICLES_VENDUS (
     etat_vente                     BIT NOT NULL
 )
 
-
+ALTER TABLE ARTICLES_VENDUS ADD image_article VARCHAR(255)
 
 ALTER TABLE ARTICLES_VENDUS ADD constraint articles_vendus_pk PRIMARY KEY (no_article)
 

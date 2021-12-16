@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,8 +20,8 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 	private static final String SELECT_FILTER_NOM = "SELECT * FROM ARTICLES_VENDUS WHERE nom_article LIKE ?";
 	private static final String SELECT_FILTER_CATEGORIE = "SELECT * FROM ARTICLES_VENDUS WHERE no_categorie LIKE ?";
 	private static final String SELECT_ALL ="SELECT * FROM ARTICLES_VENDUS a INNER JOIN UTILISATEURS u ON u.no_utilisateur = a.no_utilisateur " ;
-	private static final String SQL_INSERT_TO_ARTICLE = "INSERT INTO ARTICLES_VENDUS VALUES (nom_article, description, date_debut_encheres," +
-	"date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie, etat_vente )";
+	private static final String SQL_INSERT_TO_ARTICLE = "INSERT INTO ARTICLES_VENDUS  (nom_article, description, date_debut_encheres," +
+	"date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie, etat_vente ) VALUES (?,?,?,?,?,?,?,?,?)";
 	private final static String SQL_UPDATE_ARTICLE = "UPDATE ARTICLES_VENDUS SET nom_article=?, description=?, date_debut_encheres=?, date_fin_encheres=?, prix_initial=?, no_utilisateur=?, no_categorie=?," +
 	", no_categorie=? WHERE no_Article=?";
 	private final static String SQL_DELETE_ARTICLE = "DELETE FROM ARTICLES_VENDUS WHERE no_Article=?";
@@ -50,8 +51,8 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 				    int no_article = resultat.getInt("no_article");
 					String nom_article = resultat.getString("nom_article");
 					String description =resultat.getString("description");
-					Date date_debut_encheres = resultat.getDate("date_debut_encheres");
-					Date date_fin_encheres = resultat.getDate("date_fin_encheres");
+					LocalDate date_debut_encheres = resultat.getDate("date_debut_encheres").toLocalDate();
+					LocalDate date_fin_encheres = resultat.getDate("date_fin_encheres").toLocalDate();
 					int prix_initial = resultat.getInt("prix_initial");
 					int prix_vente = resultat.getInt("prix_vente");
 					int no_utilisateur = resultat.getInt("no_utilisateur");
@@ -60,13 +61,14 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 					boolean etat_vente = resultat.getBoolean("etat_vente");
 //					Retrait retrait =  (Retrait) resultat.getObject("retrait");
 					article = new ArticleVendu(no_article,nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente,  no_utilisateur, no_categorie, etat_vente);
+			
 					lesArticlesVendus.add(article);
 
 			user = new Utilisateur(no_utilisateur,pseudo);
 			System.out.println("affichage article + utilisateur " + article + user.getPseudo());
-
+			
 				}
-				
+
 				}
 			catch (SQLException e) {
 				System.out.println("Echec");
@@ -76,15 +78,26 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 			return lesArticlesVendus;
 		}
 	
+	
 
 	@Override
 	public void updateArticleVendu(ArticleVendu articleUpdate) throws DALException {
 		try(Connection cnx = ConnectionProvider.getConnection()) {
 			PreparedStatement pStmt = cnx.prepareStatement(SQL_UPDATE_ARTICLE);
+			
 			pStmt.setString(1, articleUpdate.getNom_article());
 			pStmt.setString(2, articleUpdate.getDescription());
-			pStmt.setDate(3, articleUpdate.getDate_debut_encheres());
-			pStmt.setDate(4, articleUpdate.getDate_fin_encheres());
+			
+			LocalDate dateDebutEnchere = articleUpdate.getDate_debut_encheres();
+			Date dateDebutEnchereSql = Date.valueOf(dateDebutEnchere);
+			pStmt.setDate(3, dateDebutEnchereSql);
+//			pStmt.setDate(3, articleUpdate.getDate_debut_encheres());
+			
+			LocalDate dateFinEnchere = articleUpdate.getDate_fin_encheres();
+			Date dateFinEnchereSql = Date.valueOf(dateFinEnchere);
+			pStmt.setDate(3, dateFinEnchereSql);
+//			pStmt.setDate(4, articleUpdate.getDate_fin_encheres());
+			
 			pStmt.setInt(5, articleUpdate.getPrix_initial());
 			pStmt.setInt(6, articleUpdate.getPrix_vente());
 			pStmt.setInt(7, articleUpdate.getNo_utilisateur());
@@ -119,14 +132,22 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 	}
 
 	@Override
-	public void insertArticleVendu(ArticleVendu nouvelArticle) throws DALException {
+	public ArticleVendu insertArticleVendu(ArticleVendu nouvelArticle) throws DALException {
 		try(Connection cnx = ConnectionProvider.getConnection()) {
 
 			PreparedStatement pStmt = cnx.prepareStatement(SQL_INSERT_TO_ARTICLE, Statement.RETURN_GENERATED_KEYS);
+			
 			pStmt.setString(1, nouvelArticle.getNom_article());
 			pStmt.setString(2, nouvelArticle.getDescription());
-			pStmt.setDate(3, nouvelArticle.getDate_debut_encheres());
-			pStmt.setDate(4, nouvelArticle.getDate_fin_encheres());
+			
+			LocalDate dateDebutEnchere = nouvelArticle.getDate_debut_encheres();
+			Date dateDebutEnchereSql = Date.valueOf(dateDebutEnchere);
+			pStmt.setDate(3, dateDebutEnchereSql );
+			
+			LocalDate dateFinEnchere = nouvelArticle.getDate_fin_encheres();
+			Date dateFinEnchereSql = Date.valueOf(dateFinEnchere);
+			pStmt.setDate(4, dateFinEnchereSql );
+
 			pStmt.setInt(5, nouvelArticle.getPrix_initial());
 			pStmt.setInt(6, nouvelArticle.getPrix_vente());
 			pStmt.setInt(7, nouvelArticle.getNo_utilisateur());
@@ -136,17 +157,16 @@ public class ArticleVenduDAOJdbcImpl implements ArticleVenduDAO {
 			pStmt.executeUpdate();
 
 			ResultSet rs = pStmt.getGeneratedKeys();
-//			if(rs.next()) {
-//			int no_article_Insere = rs.getInt(1);
-//			nouvelArticle.setNo_article(no_article_Insere);
-//			}
+			if(rs.next()) {
+			int no_article_Insere = rs.getInt(1);
+			nouvelArticle.setNo_article(no_article_Insere);
+			}
 
 			} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DALException(e.getMessage());
 			}
-
-		
+		return nouvelArticle;
 	}
 
 	@Override
