@@ -16,8 +16,21 @@ public class ArticleVendu {
 	private boolean etat_vente ;
 	
     private Retrait retrait;
+
 	private Categorie categorie;
 	private Utilisateur vendeur;
+
+    private String image_article;
+   
+
+
+	public String getImage_article() {
+		return image_article;
+	}
+
+	public void setImage_article(String image_article) {
+		this.image_article = image_article;
+	}
 
 	public int getNo_article() {
 		return no_article;
@@ -119,6 +132,7 @@ public class ArticleVendu {
 		return categorie;
 	}
 	
+
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
 	}
@@ -138,6 +152,11 @@ public class ArticleVendu {
 											LocalDate date_fin_encheres, int prix_initial,int prix_vente, int no_utilisateur, int no_categorie,
 											boolean etat_vente) {
 		this.no_article = no_article;
+
+	public ArticleVendu(int no_article,String nom_article, String description, Date date_debut_encheres,
+			Date date_fin_encheres, int prix_initial,int prix_vente, int no_utilisateur, int no_categorie,
+			 boolean etat_vente, String image_article) {
+	this.no_article = no_article;
 		this.nom_article = nom_article;
 		this.description = description;
 		this.date_debut_encheres = date_debut_encheres;
@@ -147,12 +166,20 @@ public class ArticleVendu {
 		this.no_utilisateur = no_utilisateur;
 		this.no_categorie = no_categorie;
 		this.etat_vente = etat_vente;
+		this.image_article = image_article;
 	}
 	
+
 	public ArticleVendu(String nom_article, String description, LocalDate date_debut_encheres,
 											LocalDate date_fin_encheres, int prix_initial,int prix_vente, int no_utilisateur, int no_categorie,
 											boolean etat_vente)
 	{
+
+
+
+	public ArticleVendu(int no_article, String nom_article, String description, Date date_debut_encheres,
+			Date date_fin_encheres, int prix_initial, int prix_vente, int no_categorie, boolean etat_vente) {
+		this.no_article = no_article;
 		this.nom_article = nom_article;
 		this.description = description;
 		this.date_debut_encheres = date_debut_encheres;
@@ -164,14 +191,11 @@ public class ArticleVendu {
 		this.etat_vente = etat_vente;
 	}
 	
-
-
 	@Override
 	public String toString() {
 		return "Article [no_article=" + no_article + ", nom_article=" + nom_article + ", description=" + description
 				+ ", date_debut_encheres=" + date_debut_encheres + ", date_fin_encheres=" + date_fin_encheres
 				+ ", prix_initial=" + prix_initial + ", prix_vente=" + prix_vente + ", no_utilisateur=" + no_utilisateur
 				+ ", no_categorie=" + no_categorie + "]";
-	}
-	
+	}	
 }

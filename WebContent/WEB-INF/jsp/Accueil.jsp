@@ -1,5 +1,6 @@
 <%@page import="fr.eni.zylim.encheres.bo.ArticleVendu"%>
 <%@page import="fr.eni.zylim.encheres.bll.ArticleVenduManager"%>
+<%@page import="fr.eni.zylim.encheres.bll.QueyCollection"%>
 <%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -11,29 +12,40 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0" />
 <style><%@include file="/style/Accueil.css"%></style>
-<style><%@include file="/style/responsive_style.css"%></style>
+<%-- <style><%@include file="/style/responsive_style.css"%></style> --%>
 
 <title>Accueil</title>
 </head>
 <body>
-    <a href="<%="/encheres/consulteraccueilconnexion"%>"><img class="ico2"   src="<%=getServletContext().getContextPath()%>/images/icone.png"></a>
-<div id="wrapper">
+<div class ="titre_logo_connexion_inscription">
+<div class= "logo">
+    <a href="<%="/encheres/consulteraccueilconnexion"%>"><img src="<%=getServletContext().getContextPath()%>/images/icone.png"  class="ico2" ></a>
+</div>
 
-<div class="form_div">
-<p class="form_label">Troc-enchères</p>
-<a href=/encheres/ajouterutilisateur>S'inscrire</a></li>
-<a href=/encheres/connexionutilisateur>Se connecter</a></li>
-<p class="le_filtre">Filtres</p>
-<form method="post" action="*******">
-<div id="input_container">
-<div class="barre_de_recherche">
+<div class= "titre">
+<h1 >Troc-enchères</h1>
+</div>
+<div class="inscription_connexion">
+<a href=/encheres/ajouterutilisateur>S'inscrire</a>
+<a href=/encheres/connexionutilisateur>Se connecter</a>
+</div>
+</div>
+
+
+<div class ="filtre_recherche">
+
+<div class = "filtre_categorie">
+<p>Filtres</p>
+<!-- <form method="post" action="*******"> -->
+
+
     <input type="text" id="input_search" value="Le nom de l'article contient">
     <img src=/encheres/images/icon_search.jfif id="input_img">
-    </div>  
+
     
 
-<p>
-       <label for="categories">Catégories</label><br />
+<div class="filtre_categories">
+       <label for="categories">Catégories</label>
        <select name="categories" id="categories">
            <option value="informatique">Informatique</option>
            <option value="ameublement">Ameublement</option>
@@ -42,45 +54,37 @@
            <option value="loisirs">Loisirs</option>
            
        </select>
-   </p>
-   <input class="btnRechercher" type="submit" value="Rechercher">
-</form>
+</div>
+   </div>
+ 
+   <div = "rechercher_submit">
+   <input  type="submit" value="Rechercher" class = input_submit>
+   </div>
+   </div>
+<!-- </form> -->
+<div class = "les_articles">
 
-  
 
-
- <div class = "tous_les_articles">
-
-<!-- <div class= un_article> -->
-
-<!-- <img src="url" /> -->
-<br>
  <c:forEach items="${lesArticles}" var="article">
+     <div class = "affiche_article">
+     <div class ="image_article_affiche">
      
-    <a href ="/encheres/detailachatservlet" class="nounderline">
-  <div class="card-trip nounderline">
-
-  <div class="card-trip-infos">
- <img src="" />
-    <div>
-      <h2 >${article.nom_article}</h2>
+              <img src= "${article.image_article}" id ="image_article"/>
+       </div>  
+      <div class ="affiche"> 
+      <h3><a href ="/encheres/detailachatservlet">${article.nom_article}</a></h3> 
       <p>${article.description}</p>
-      <p>${article.date_fin_encheres}</p>
+      <p>${article.date_debut_encheres}</p>
+      <p>${article.rue}</p>
+      <p>${article.code_postal}</p>
+      <p>${article.ville}</p>
+      <p>${article.pseudo}</p> 
+      <p>${article.prix_initial} pts</p>        
+          
+    </div>   
+    </div>      
+    </c:forEach> 
+
     </div>
-    <h2 class="card-trip-pricing nounderline">${article.prix_initial}  pts</h2>
-  </div>
-</div>
-</a>
-<br>
-    </c:forEach>
-    
-<p class = "retrait">afficher l'adresse de retrait</p>
-<p class = "pseudo_vendeur">afficher le pseudo de vendeur</p>
-
-
-</div>
-
-</div>
-</div>
 </body>
 </html>
