@@ -39,6 +39,16 @@ private static ArticleVenduManager instance;
 		}
 		return lesArticles;
 	}
+	public static List<QueyCollection> selectAllArticleRetraitMang() throws DALException{
+		List<QueyCollection> lesArticles = new ArrayList<QueyCollection>();
+		try {
+		lesArticles = dao.selectAllArticleRetrait();
+		} catch (DALException e) {
+		e.printStackTrace();
+
+		}
+		return lesArticles;
+		}
 	
 
 }
