@@ -19,4 +19,9 @@ public class RetraitManager {
 		
 	}
 
+	public static Retrait selectionnerRetraitByNoArticle(int noArticle) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
