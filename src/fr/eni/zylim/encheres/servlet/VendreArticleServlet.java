@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import fr.eni.zylim.encheres.bll.ArticleVenduManager;
 import fr.eni.zylim.encheres.bll.CategorieManager;
 import fr.eni.zylim.encheres.bll.RetraitManager;
+import fr.eni.zylim.encheres.bll.UtilisateurManager;
 import fr.eni.zylim.encheres.bo.ArticleVendu;
 import fr.eni.zylim.encheres.bo.Categorie;
 import fr.eni.zylim.encheres.bo.Retrait;
@@ -38,66 +39,44 @@ public class VendreArticleServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		ArticleVendu article = new ArticleVendu();
 		
-		String nom = request.getParameter("article");
+		String nom = request.getParameter("nom");
 		String description = request.getParameter("description");
-		
-		ZoneId systemTimeZone = ZoneId.systemDefault();
-		LocalDate utilDateDebutEncheres  = LocalDate.parse(request.getParameter("dateDebutEnchere"));
-		ZonedDateTime zonedDateTime = utilDateDebutEncheres.atStartOfDay(systemTimeZone);
-		Date dateDebutEncheres = Date.from(zonedDateTime.toInstant());
-		
-		LocalDate utilDateFinEncheres  = LocalDate.parse(request.getParameter("dateFinEnchere"));
-		ZonedDateTime zonedDateTime2 = utilDateFinEncheres.atStartOfDay(systemTimeZone);
-		Date dateFinEncheres = Date.from(zonedDateTime2.toInstant());
-		
+		LocalDate dateDebutEncheres  = LocalDate.parse(request.getParameter("dateDebutEnchere"));
+		LocalDate dateFinEncheres  = LocalDate.parse(request.getParameter("dateFinEnchere"));
 		int miseAPrix = Integer.parseInt(request.getParameter("prixBase"));
 		int categorieId = Integer.parseInt(request.getParameter("categorie"));
-		String rue = request.getParameter("rue");
-		String codePostal = request.getParameter("codePostal");
-		String ville = request.getParameter("ville");
+		String image = "";
+	    String name = (String) session.getAttribute("user");
+	    Utilisateur utilisateur = UtilisateurManager.getUtilisateurProfile(name);
+	     int noUtil =  utilisateur.getNo_utilisateur();
+
+		ArticleVendu article = new ArticleVendu(nom, description, dateDebutEncheres, dateFinEncheres, miseAPrix, miseAPrix, noUtil, categorieId, false, image);
 		
-		Categorie categorie;
+			try {
+				ArticleVenduManager articleVenduManager  = new ArticleVenduManager();
+				ArticleVendu nouvelArticle = articleVenduManager.nouvelleVente(article);
+				System.out.println(article);
 
-		try {
-			categorie = CategorieManager.selectionnerCategorieById(categorieId);
-
-
-		Utilisateur utilisateur = (Utilisateur) session.getAttribute("user");
-		Retrait retrait = new Retrait();
-			
-		retrait = new Retrait();
-		retrait.setRue(rue);
-		retrait.setCode_postal(codePostal);
-		retrait.setVille(ville);
-			
-
-		RetraitManager.ajouterLieuRetrait(retrait);			
-		
-		article.setNom_article(nom);
-		article.setDescription(description);
-		article.setDate_debut_encheres((java.sql.Date) dateDebutEncheres);
-		article.setDate_fin_encheres((java.sql.Date) dateFinEncheres);
-		article.setPrix_initial(miseAPrix);
-		article.setCategorie(categorie);
-		article.setRetrait(retrait);
-		article.setVendeur(utilisateur);
-		
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		try {
-			ArticleVenduManager.nouvelleVente(article);
-		} catch (DALException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+				int noArticle = nouvelArticle.getNo_article();
+				String rue = request.getParameter("rue");
+				String codePostal = request.getParameter("codePostal");
+				String ville = request.getParameter("ville");
+				
+				Retrait retrait = new Retrait(noArticle, rue, codePostal, ville);
+				
+				try {
+					RetraitManager.ajouterLieuRetrait(retrait);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}		
+			} catch (DALException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		request.setAttribute("ArticleAffiche", article);
-		this.getServletContext().getRequestDispatcher("/detailventeservlet").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/detailachatservlet").forward(request, response);
 		
 	}
 }

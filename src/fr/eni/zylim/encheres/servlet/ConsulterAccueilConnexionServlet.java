@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import fr.eni.zylim.encheres.bll.ArticleVenduManager;
-
+import fr.eni.zylim.encheres.bll.QueyCollection;
 import fr.eni.zylim.encheres.bo.ArticleVendu;
+import fr.eni.zylim.encheres.dal.DALException;
 
 /**
  * Servlet implementation class ConsulterAvecConnexion
@@ -29,29 +30,23 @@ public class ConsulterAccueilConnexionServlet extends HttpServlet {
     }
 
 	/**
+	 * @throws ServletException 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
+		List<QueyCollection> listeArticle = null;
+		listeArticle = ArticleVenduManager.getInstance().selectAllArticleRetraitMang();
 
 
-
-	
-		List<ArticleVendu> listeArticle = ArticleVenduManager.getInstance().selectAllArticle();
-	
 		
 		System.out.println("listeArticle : " + listeArticle);
-		
 		// Déposer les objets nécessaires aux composants suivants
 		request.setAttribute("lesArticles", listeArticle);
+//		request.setAttribute("mesUtilisateurs", mesUtilisateurs );
+	
 		getServletContext().getRequestDispatcher("/WEB-INF/jsp/Accueil.jsp").forward(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	
 	}
 
 }

@@ -58,15 +58,12 @@
  <c:forEach items="${lesArticles}" var="article">
      
     <a href ="/encheres/detailachatservlet" class="nounderline">
-  <div class="card-trip nounderline">
-
-  <div class="card-trip-infos">
- <img src="" />
-    <div>
-      <h2 >${article.nom_article}</h2>
-      <p>${article.description}</p>
-      <p>${article.date_fin_encheres}</p>
-    </div>
+<div class="card-product">
+  <img src="${article.image_article}" />
+  <div class="card-product-infos">
+    <h2>${article.nom_article}</h2>
+    <p>${article.description}</p>
+    <p>${article.pseudo}</p> 
     <h2 class="card-trip-pricing nounderline">${article.prix_initial}  pts</h2>
   </div>
 </div>

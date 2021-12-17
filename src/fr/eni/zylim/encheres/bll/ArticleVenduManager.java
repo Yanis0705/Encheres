@@ -18,7 +18,7 @@ private static ArticleVenduManager instance;
 	
 	private static ArticleVenduDAO articleVendudao;
 	
-	private ArticleVenduManager() {
+	public ArticleVenduManager() {
 		articleVendudao = DAOFactory.getArticleVenduDAO();
 	};
 
@@ -43,6 +43,17 @@ private static ArticleVenduManager instance;
 	public static ArticleVendu nouvelleVente(ArticleVendu article) throws DALException {
 		articleVendudao.insertArticleVendu(article);
 		return article;	
+	}
+
+	public List<QueyCollection> selectAllArticleRetraitMang() {
+		List<QueyCollection> lesArticles = new ArrayList<QueyCollection>();
+		try {
+		lesArticles = articleVendudao.selectAllArticleRetrait();
+		} catch (DALException e) {
+		e.printStackTrace();
+
+		}
+		return lesArticles;
 	}
 	
 

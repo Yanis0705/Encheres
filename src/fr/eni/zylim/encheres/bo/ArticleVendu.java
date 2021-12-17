@@ -1,18 +1,20 @@
 package fr.eni.zylim.encheres.bo;
 
-import java.sql.Date;
+
+import java.time.LocalDate;
 
 public class ArticleVendu {
 	private int no_article;
 	private String nom_article;
 	private String description;
-	private Date date_debut_encheres;
-	private Date date_fin_encheres;
+	private LocalDate date_debut_encheres;
+	private LocalDate date_fin_encheres;
 	private int prix_initial ;
 	private int prix_vente ;
 	private int no_utilisateur ;
 	private int no_categorie ;
 	private boolean etat_vente ;
+	private String image_article;
 	
     private Retrait retrait;
 	private Categorie categorie;
@@ -38,19 +40,19 @@ public class ArticleVendu {
 		this.description = description;
 	}
 
-	public Date getDate_debut_encheres() {
+	public LocalDate getDate_debut_encheres() {
 		return date_debut_encheres;
 	}
 
-	public void setDate_debut_encheres(Date dateDebutEncheres) {
+	public void setDate_debut_encheres(LocalDate dateDebutEncheres) {
 		this.date_debut_encheres = dateDebutEncheres;
 	}
 
-	public Date getDate_fin_encheres() {
+	public LocalDate getDate_fin_encheres() {
 		return date_fin_encheres;
 	}
 
-	public void setDate_fin_encheres(Date dateFinEncheres) {
+	public void setDate_fin_encheres(LocalDate dateFinEncheres) {
 		this.date_fin_encheres = dateFinEncheres;
 	}
 
@@ -122,23 +124,38 @@ public class ArticleVendu {
 		this.categorie = categorie;
 	}
 	
-	public ArticleVendu() {
+	public ArticleVendu(String nom, String description2, LocalDate dateDebutEncheres, LocalDate dateFinEncheres, int miseAPrix, int miseAPrix2, int noUtil, int categorieId, boolean b) {
 		super();
 	}
 
 	
 
-	public ArticleVendu( int no_article, String nom_article, String description, Date date_debut_encheres,
-			Date date_fin_encheres, int prix_initial,int prix_vente,  int no_utilisateur, int no_categorie,
+	public ArticleVendu( int no_article, String nom_article, String description, LocalDate date_debut_encheres,
+			LocalDate date_fin_encheres, int prix_initial,int prix_vente,  int no_utilisateur, int no_categorie,
 			boolean etat_vente, Retrait retrait) {
 	
 		this(no_article,nom_article,description,date_debut_encheres,date_fin_encheres, prix_initial,prix_vente,no_utilisateur,no_categorie,etat_vente);
 		this.retrait = retrait;
 
 	}
-	public ArticleVendu(int no_article,String nom_article, String description, Date date_debut_encheres,
-			Date date_fin_encheres, int prix_initial,int prix_vente, int no_utilisateur, int no_categorie,
+	public ArticleVendu(int no_article,String nom_article, String description,LocalDate date_debut_encheres2,
+			LocalDate date_fin_encheres2, int prix_initial,int prix_vente, int no_utilisateur, int no_categorie,
 			 boolean etat_vente) {
+	this.no_article = no_article;
+		this.nom_article = nom_article;
+		this.description = description;
+		this.date_debut_encheres = date_debut_encheres2;
+		this.date_fin_encheres = date_fin_encheres2;
+		this.prix_initial = prix_initial;
+		this.prix_vente= prix_vente;
+		this.no_utilisateur = no_utilisateur;
+		this.no_categorie = no_categorie;
+		this.etat_vente = etat_vente;
+	}
+	
+	public ArticleVendu(int no_article,String nom_article, String description, LocalDate date_debut_encheres,
+			LocalDate date_fin_encheres, int prix_initial,int prix_vente, int no_utilisateur, int no_categorie,
+			 boolean etat_vente, String image_article) {
 	this.no_article = no_article;
 		this.nom_article = nom_article;
 		this.description = description;
@@ -149,8 +166,22 @@ public class ArticleVendu {
 		this.no_utilisateur = no_utilisateur;
 		this.no_categorie = no_categorie;
 		this.etat_vente = etat_vente;
+		this.image_article = image_article;
 	}
-	
+	public ArticleVendu(String nom_article, String description, LocalDate date_debut_encheres,
+			LocalDate date_fin_encheres, int prix_initial,int prix_vente, int no_utilisateur, int no_categorie,
+			 boolean etat_vente, String image_article) {
+		this.nom_article = nom_article;
+		this.description = description;
+		this.date_debut_encheres = date_debut_encheres;
+		this.date_fin_encheres = date_fin_encheres;
+		this.prix_initial = prix_initial;
+		this.prix_vente= prix_vente;
+		this.no_utilisateur = no_utilisateur;
+		this.no_categorie = no_categorie;
+		this.etat_vente = etat_vente;
+		this.image_article = image_article;
+	}
 	@Override
 	public String toString() {
 		return "Article [no_article=" + no_article + ", nom_article=" + nom_article + ", description=" + description
