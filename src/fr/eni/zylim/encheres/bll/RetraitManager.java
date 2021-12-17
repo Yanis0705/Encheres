@@ -19,9 +19,8 @@ public class RetraitManager {
 		
 	}
 
-	public static Retrait selectionnerRetraitByNoArticle(int noArticle) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		public static Retrait selectionnerRetraitByNoArticle(int noArticle) throws SQLException {
+			return  retraitDAO.selectionnerByNoArticle(noArticle);
+		}
 
 }
